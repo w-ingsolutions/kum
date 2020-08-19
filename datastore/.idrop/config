@@ -1,0 +1,19 @@
+{
+  "Identity": {
+    "PeerID": "12D3KooWSeJwF5D85f5cXXhHMCwoF22g5TX4EuYFn6ZT9oghn66v",
+    "PrivKey": "CAESQN2JFYR3CCTqQL/JJa997W+0R8ChZc/gvaFT8GdxWc4R+gM23179oQrecAkIf38e9Evk05PBe0Y8RqYiznuQO3M="
+  },
+  "Addresses": {
+    "Swarm": [
+      "/ip4/0.0.0.0/tcp/3700",
+      "/ip6/::/tcp/3700"
+    ]
+  },
+  "Bootstrap": null,
+  "DeviceName": "",
+  "ConnMgr": {
+    "LowWater": 3,
+    "HighWater": 20
+  },
+  "ReprovideInterval": 43200000000000
+}
