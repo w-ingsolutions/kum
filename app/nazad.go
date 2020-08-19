@@ -28,7 +28,7 @@ func (w *WingCal) Nazad() func(gtx C) D {
 					if len(w.Putanja) == 4 {
 						//komanda = "/" + Podvrstaradova + "/" + fmt.Sprint(w.Roditelj)
 					}
-					w.UcitajRadove("QmUn3oue7CxL3ERQH26P8wQMZBmdhxrapHukg2AJwwBGEK", "radovi")
+					//w.UcitajRadove("QmUn3oue7CxL3ERQH26P8wQMZBmdhxrapHukg2AJwwBGEK", "radovi")
 					//w.LinkoviIzboraVrsteRadova = GenerisanjeLinkova(w.IzbornikRadova)
 					//w.GenerisanjeLinkova(w.IzbornikRadova)
 					w.Putanja = w.Putanja[:len(w.Putanja)-1]

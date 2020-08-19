@@ -9,13 +9,13 @@ import (
 	"gioui.org/widget"
 	"github.com/gioapp/gel/counter"
 	"github.com/gioapp/gel/theme"
-	"github.com/marcetin/jdb"
 	"github.com/w-ingsolutions/c/model"
 	wapp "github.com/w-ingsolutions/c/pkg/app"
 	"github.com/w-ingsolutions/c/pkg/icons"
 	"github.com/w-ingsolutions/c/pkg/latcyr"
 	"github.com/w-ingsolutions/c/pkg/translate"
 	"github.com/w-ingsolutions/kum/db"
+	"github.com/w-ingsolutions/kum/pkg/jdb"
 	"path/filepath"
 )
 

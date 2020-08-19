@@ -101,36 +101,36 @@ func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l model.ElementMenu) {
 	for l.Link.Clicked() {
 		fmt.Println("IZBOR", l.Title)
 
-		komanda := fmt.Sprint(l.Id)
+		//komanda := fmt.Sprint(l.Id)
 		if len(w.Putanja) == 1 {
 			fmt.Println("111111")
-			komanda = fmt.Sprint(l.Id)
+			//komanda = fmt.Sprint(l.Id)
 			Podvrstaradova = fmt.Sprint(l.Id)
 			w.Podvrsta = l.Id
 		}
 		if len(w.Putanja) == 2 {
 			fmt.Println("2222222")
-			komanda = Podvrstaradova + "/" + fmt.Sprint(l.Id)
+			//komanda = Podvrstaradova + "/" + fmt.Sprint(l.Id)
 			Elementi = fmt.Sprint(l.Id)
 			w.Roditelj = l.Id
 		}
 		if len(w.Putanja) == 3 {
 			fmt.Println("3333333")
-			komanda = Podvrstaradova + "/" + Elementi + "/" + fmt.Sprint(l.Id)
+			//komanda = Podvrstaradova + "/" + Elementi + "/" + fmt.Sprint(l.Id)
 		}
 		if len(w.Putanja) == 1 {
 			fmt.Println("1111111")
 			fmt.Println("1111111lHash", l.Hash)
 			fmt.Println("1111111lTitle", l.Title)
-			w.UcitajRadovePodKategorija(l.Hash, l.Title)
+			//w.UcitajRadovePodKategorija(l.Hash, l.Title)
 		}
 		if len(w.Putanja) == 2 {
 			fmt.Println("2222222")
-			w.APIpozivElementi("radovi/" + komanda)
+			//w.APIpozivElementi("radovi/" + komanda)
 		}
 		if len(w.Putanja) == 3 {
 			fmt.Println("333333")
-			w.APIpozivElement("radovi/" + komanda)
+			//w.APIpozivElement("radovi/" + komanda)
 			w.Element = true
 		}
 		if len(w.Putanja) < 3 {

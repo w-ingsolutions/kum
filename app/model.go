@@ -9,10 +9,10 @@ import (
 	"gioui.org/widget"
 	"github.com/gioapp/gel/counter"
 	"github.com/gioapp/gel/theme"
-	"github.com/marcetin/jdb"
 	"github.com/w-ingsolutions/c/model"
 	"github.com/w-ingsolutions/c/pkg/cache"
 	"github.com/w-ingsolutions/c/pkg/translate"
+	"github.com/w-ingsolutions/kum/pkg/jdb"
 )
 
 type (
