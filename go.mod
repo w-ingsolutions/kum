@@ -7,6 +7,7 @@ require (
 	github.com/bregydoc/gtranslate v0.0.0-20191225024717-45b28d4fda86 // indirect
 	github.com/gioapp/cms v0.0.0-20200807230340-6decd205679c
 	github.com/gioapp/gel v0.0.0-20200719184500-af01009f3e0f
+	github.com/hsanjuan/ipfs-lite v1.1.15
 	github.com/ipfs/go-bitswap v0.2.19
 	github.com/ipfs/go-blockservice v0.1.3
 	github.com/ipfs/go-cid v0.0.7
