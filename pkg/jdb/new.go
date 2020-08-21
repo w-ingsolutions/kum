@@ -25,6 +25,8 @@ func New(ctx context.Context, store string) *JavazacDB {
 		index: make(map[string]string),
 		store: store,
 	}
+	//log.SetLogLevel("*", "warn")
+
 	crypto.MinRsaKeyBits = 1024
 	ds, err := ipfslite.BadgerDatastore("/tmp/stest")
 	if err != nil {
@@ -60,10 +62,15 @@ func New(ctx context.Context, store string) *JavazacDB {
 
 func (j *JavazacDB) ReadList(hash string) (itms items.I) {
 	c, _ := cid.Decode(hash)
+
+	//fmt.Println("nnnnnnnnnnhashhashhashhash--------><", hash)
+
 	node, err := j.peer.Get(j.ctx, c)
 	if err != nil {
 		panic(err)
 	}
+	//fmt.Println("nnnnnnnnnn--------><", node)
+
 	n := node.Links()
 	for i := 0; i < len(n); i++ {
 		itms = append(itms, &items.FolderListItem{

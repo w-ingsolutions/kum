@@ -1,0 +1,45 @@
+package mod
+
+import (
+	"gioui.org/widget"
+	"github.com/w-ingsolutions/c/model"
+	"github.com/w-ingsolutions/cms/pkg/phi"
+)
+
+type WingVrstaRadova struct {
+	Id                 int
+	Naziv              string
+	Opis               string
+	Obracun            string
+	Jedinica           string
+	Cena               float64
+	Slug               string
+	Omogucen           bool
+	Baza               bool
+	Element            bool
+	PodvrsteRadova     map[int]WingVrstaRadova
+	NeophodanMaterijal map[int]WingNeophodanMaterijal
+}
+
+type WingIzabraniElement struct {
+	Sifra         string
+	Kolicina      int
+	SumaCena      float64
+	Element       phi.Φ
+	DugmeBrisanje *widget.Clickable
+}
+
+type WingIzabraniElementi struct {
+	Id                       string
+	SumaCena                 float64
+	SumaCenaMaterijal        float64
+	Elementi                 []*WingIzabraniElement
+	NeophodanMaterijal       map[int]model.WingNeophodanMaterijal
+	NeophodanMaterijalPrikaz map[int]model.WingNeophodanMaterijal
+}
+
+type WingCalGrupaRadova struct {
+	Id       string
+	Slug     string
+	Elementi map[int]WingVrstaRadova `json:"elementi"`
+}

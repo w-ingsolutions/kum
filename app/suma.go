@@ -8,8 +8,8 @@ import (
 	"gioui.org/widget/material"
 	"github.com/gioapp/gel/container"
 	"github.com/gioapp/gel/helper"
-	"github.com/w-ingsolutions/c/model"
 	"github.com/w-ingsolutions/c/pkg/lyt"
+	"github.com/w-ingsolutions/kum/mod"
 )
 
 var (
@@ -28,7 +28,7 @@ func (w *WingCal) SumaStranaPrazno() func(gtx C) D {
 	}
 }
 
-func (w *WingCal) SumaElementi(el []*model.WingIzabraniElement) func(gtx C) D {
+func (w *WingCal) SumaElementi(el []*mod.WingIzabraniElement) func(gtx C) D {
 	return func(gtx C) D {
 		return sumList.Layout(gtx, len(el), func(gtx C, i int) D {
 			element := el[i]
@@ -36,9 +36,9 @@ func (w *WingCal) SumaElementi(el []*model.WingIzabraniElement) func(gtx C) D {
 				func(gtx C) D {
 					return layout.UniformInset(unit.Dp(4)).Layout(gtx, func(gtx C) D {
 						return lyt.Format(gtx, "hflexb(middle,f(0.6,_),r(_),f(0.1,_),r(_),f(0.1,_),r(_),f(0.1,_),r(_),f(0.2,_))",
-							w.cell(text.Start, w.text(element.Element.Naziv)),
+							w.cell(text.Start, w.text(element.Element.Struct["Naziv"].Content.(string))),
 							helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
-							w.cell(text.Middle, fmt.Sprint(element.Element.Cena)),
+							w.cell(text.Middle, fmt.Sprint(element.Element.Struct["Cena"].Content.(string))),
 							helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
 							w.cell(text.Middle, fmt.Sprint(element.Kolicina)),
 							helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),

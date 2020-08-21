@@ -9,9 +9,9 @@ import (
 	"github.com/gioapp/gel/container"
 	"github.com/gioapp/gel/counter"
 	"github.com/gioapp/gel/helper"
-	"github.com/w-ingsolutions/c/model"
 	"github.com/w-ingsolutions/c/pkg/latcyr"
 	"github.com/w-ingsolutions/c/pkg/lyt"
+	"github.com/w-ingsolutions/kum/mod"
 )
 
 func (w *WingCal) PrikazaniElementDugmeDodaj(sumaCena float64) func(gtx C) D {
@@ -33,18 +33,18 @@ func (w *WingCal) PrikazaniElementDugmeDodaj(sumaCena float64) func(gtx C) D {
 			fmt.Println("kolicina.Value", w.UI.Counters.Kolicina.Value)
 			if w.UI.Counters.Kolicina.Value > 0 {
 				for _, s := range w.Suma.Elementi {
-					if s.Element.Id == w.PrikazaniElement.Id {
+					if s.Element.ID == w.PrikazaniElement.ID {
 						varijacijaRada = varijacijaRada + 1
 					}
 				}
-				suma := model.WingIzabraniElement{
-					Sifra:         fmt.Sprint(w.Podvrsta) + "." + fmt.Sprint(w.Roditelj) + "." + fmt.Sprint(w.PrikazaniElement.Id) + "." + fmt.Sprint(varijacijaRada+1),
+				suma := &mod.WingIzabraniElement{
+					Sifra:         fmt.Sprint(w.Podvrsta) + "." + fmt.Sprint(w.Roditelj) + "." + fmt.Sprint(w.PrikazaniElement.ID) + "." + fmt.Sprint(varijacijaRada+1),
 					Kolicina:      w.UI.Counters.Kolicina.Value,
 					SumaCena:      sumaCena,
-					Element:       *w.PrikazaniElement,
+					Element:       w.PrikazaniElement,
 					DugmeBrisanje: new(widget.Clickable),
 				}
-				w.Suma.Elementi = append(w.Suma.Elementi, &suma)
+				w.Suma.Elementi = append(w.Suma.Elementi, suma)
 				w.SumaRacunica()
 				w.Strana = "sumaRadovi"
 			}
@@ -65,9 +65,9 @@ func (w *WingCal) PrikazaniElementIzgled() func(gtx C) D {
 		neophodanNaslov := material.H6(w.UI.Tema.T, w.text("Neophodan materijal za izvrsenje radova"))
 		neophodanNaslov.Color = helper.HexARGB(w.UI.Tema.Colors["Primary"])
 		widgets := []layout.Widget{
-			material.H5(w.UI.Tema.T, fmt.Sprint(w.Podvrsta)+"."+fmt.Sprint(w.Roditelj)+"."+fmt.Sprint(w.PrikazaniElement.Id)+" "+w.text(w.PrikazaniElement.Naziv)).Layout,
-			material.Body1(w.UI.Tema.T, w.text(w.PrikazaniElement.Opis)).Layout,
-			material.Caption(w.UI.Tema.T, w.text(w.PrikazaniElement.Obracun)).Layout,
+			material.H5(w.UI.Tema.T, fmt.Sprint(w.Podvrsta)+"."+fmt.Sprint(w.Roditelj)+"."+fmt.Sprint(w.PrikazaniElement.ID)+" "+w.text(w.PrikazaniElement.Struct["Title"].Content.(string))).Layout,
+			material.Body1(w.UI.Tema.T, w.text(w.PrikazaniElement.Struct["Opis"].Content.(string))).Layout,
+			material.Caption(w.UI.Tema.T, w.text(w.PrikazaniElement.Struct["Obracun"].Content.(string))).Layout,
 			neophodanNaslov.Layout,
 			helper.DuoUIline(false, 4, 0, 4, w.UI.Tema.Colors["Secondary"]),
 			w.PrikazaniElementStavkeMaterijala(),
@@ -84,14 +84,14 @@ func (w *WingCal) PrikazaniElementSuma() func(gtx C) D {
 	return func(gtx C) D {
 		return container.DuoUIcontainer(w.UI.Tema, 0, w.UI.Tema.Colors["Gray"]).Layout(gtx, layout.NW, func(gtx C) D {
 			gtx.Constraints.Min.X = gtx.Constraints.Max.X
-			sumaCena := float64(w.UI.Counters.Kolicina.Value) * w.PrikazaniElement.Cena
+			sumaCena := float64(w.UI.Counters.Kolicina.Value) * w.PrikazaniElement.Struct["Cena"].Content.(float64)
 			return lyt.Format(gtx, "hflexb(middle,f(1,_),r(_))",
 				func(gtx C) D {
 					return lyt.Format(gtx, "vflexb(middle,r(_),r(_),r(_))",
 						func(gtx C) D {
 							return container.DuoUIcontainer(w.UI.Tema, 10, w.UI.Tema.Colors["LightGrayII"]).Layout(gtx, layout.NW, func(gtx C) D {
 								gtx.Constraints.Min.X = gtx.Constraints.Max.X
-								return material.Body2(w.UI.Tema.T, w.text("Cena:")+fmt.Sprint(w.PrikazaniElement.Cena)).Layout(gtx)
+								return material.Body2(w.UI.Tema.T, w.text("Cena:")+fmt.Sprint(w.PrikazaniElement.Struct["Cena"].Content.(float64))).Layout(gtx)
 							})
 						},
 						helper.DuoUIline(false, 0, 0, 1, w.UI.Tema.Colors["Dark"]),

@@ -2,6 +2,8 @@ package calc
 
 import (
 	"context"
+	"github.com/w-ingsolutions/cms/pkg/phi"
+	"github.com/w-ingsolutions/kum/mod"
 
 	"gioui.org/app"
 	"gioui.org/layout"
@@ -24,7 +26,7 @@ var (
 	//post             = new(model.DuoCMSpost)
 	prikazaniElementSumaCena float64
 	selected                 int
-	projekat                 = &model.WingProjekat{
+	projekat                 = &mod.WingProjekat{
 		//Materijal: make(map[int]model.WingNeophodanMaterijal),
 		//Elementi: new(model.WingIzabraniElementi),
 	}
@@ -47,8 +49,8 @@ type WingCal struct {
 	IzbornikRadova map[int]model.ElementMenu
 
 	Transfered       model.WingCalGrupaRadova
-	PrikazaniElement *model.WingVrstaRadova
-	Suma             *model.WingIzabraniElementi
+	PrikazaniElement phi.Φ
+	Suma             *mod.WingIzabraniElementi
 	Podvrsta         int
 	Roditelj         int
 	Element          bool
@@ -102,8 +104,8 @@ type WingPodesavanja struct {
 }
 
 type WingUloge struct {
-	Projektanti []*model.WingPravnoLice
-	Investotori []*model.WingPravnoLice
+	Projektanti []*mod.WingPravnoLice
+	Investotori []*mod.WingPravnoLice
 }
 type WingCounters struct {
 	Kolicina  *counter.DuoUIcounter

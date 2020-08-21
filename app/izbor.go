@@ -135,8 +135,9 @@ func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l model.ElementMenu) {
 		}
 		if len(w.Putanja) == 3 {
 			fmt.Println("333333")
-			//w.APIpozivElement("radovi/" + komanda)
+			w.UcitajElement(l.Icon, l.Hash)
 			w.Element = true
+
 		}
 		if len(w.Putanja) < 3 {
 			w.Putanja = append(w.Putanja, l.Title)

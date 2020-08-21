@@ -209,16 +209,16 @@ func (w *WingCal) specifikacijaRadovaList(p *gofpdf.Fpdf, pagew, mleft, mright, 
 				"Šifra", e.Sifra,
 			},
 			[]string{
-				"Naziv", e.Element.Naziv,
+				"Naziv", e.Element.Struct["Naziv"].Content.(string),
 			},
 			[]string{
-				"Opis", e.Element.Opis,
+				"Opis", e.Element.Struct["Opis"].Content.(string),
 			},
 			[]string{
-				"Jedinica mere", e.Element.Jedinica,
+				"Jedinica mere", e.Element.Struct["Jedinica"].Content.(string),
 			},
 			[]string{
-				"Jedinična cena", fmt.Sprint(e.Element.Cena),
+				"Jedinična cena", e.Element.Struct["Cena"].Content.(string),
 			},
 			[]string{
 				"Količina", fmt.Sprint(e.Kolicina),
@@ -276,7 +276,7 @@ func (w *WingCal) aktivnostiSuma(p *gofpdf.Fpdf, pagew, mleft, mright, marginCel
 		cols := []float64{40, pagew - mleft - mright - 20}
 		rows := [][]string{
 			[]string{
-				e.Sifra, e.Element.Naziv,
+				e.Sifra, e.Element.Struct["Naziv"].Content.(string),
 			},
 		}
 		for _, row := range rows {

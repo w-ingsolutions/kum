@@ -14,7 +14,9 @@ import (
 	"github.com/w-ingsolutions/c/pkg/icons"
 	"github.com/w-ingsolutions/c/pkg/latcyr"
 	"github.com/w-ingsolutions/c/pkg/translate"
+	"github.com/w-ingsolutions/cms/pkg/phi"
 	"github.com/w-ingsolutions/kum/db"
+	"github.com/w-ingsolutions/kum/mod"
 	"github.com/w-ingsolutions/kum/pkg/jdb"
 	"path/filepath"
 )
@@ -23,9 +25,9 @@ func NewWingCal() *WingCal {
 	w := &WingCal{
 		Strana:           "radovi",
 		ctx:              context.Background(),
-		PrikazaniElement: &model.WingVrstaRadova{},
-		Suma: &model.WingIzabraniElementi{
-			Elementi:           []*model.WingIzabraniElement{},
+		PrikazaniElement: phi.Φ{},
+		Suma: &mod.WingIzabraniElementi{
+			Elementi:           []*mod.WingIzabraniElement{},
 			NeophodanMaterijal: make(map[int]model.WingNeophodanMaterijal),
 		},
 	}

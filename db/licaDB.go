@@ -1,10 +1,10 @@
 package db
 
 import (
-	"github.com/w-ingsolutions/c/model"
+	"github.com/w-ingsolutions/kum/mod"
 )
 
-func NewLica() (p []*model.WingPravnoLice, k []*model.WingPravnoLice) {
+func NewLica() (p []*mod.WingPravnoLice, k []*mod.WingPravnoLice) {
 	for _, l := range lica() {
 		if l.Projektant {
 			p = append(p, l)
@@ -14,9 +14,9 @@ func NewLica() (p []*model.WingPravnoLice, k []*model.WingPravnoLice) {
 	}
 	return
 }
-func lica() map[int]*model.WingPravnoLice {
-	return map[int]*model.WingPravnoLice{
-		0: &model.WingPravnoLice{
+func lica() map[int]*mod.WingPravnoLice {
+	return map[int]*mod.WingPravnoLice{
+		0: &mod.WingPravnoLice{
 			Id:             0,
 			Projektant:     true,
 			Naziv:          "W-ING SOLUTIONS DOO",
@@ -27,20 +27,20 @@ func lica() map[int]*model.WingPravnoLice {
 			Grad:           "21000 Novi Sad",
 			DatumOsnivanja: "12/29/2010",
 			Delatnost:      "Engineering activities and related technical consultancy",
-			Racuni: []model.WingBankaRacun{
-				model.WingBankaRacun{
+			Racuni: []mod.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Erste Bank a.d. Novi Sad",
 					Racun: "340-0000013011331-95",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Erste Bank a.d. Novi Sad",
 					Racun: "340-0000013002280-88",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Erste Bank a.d. Novi Sad",
 					Racun: "340-0000011005651-31",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Erste Bank a.d. Novi Sad",
 					Racun: "340-0000010008608-68",
 				},
@@ -48,7 +48,7 @@ func lica() map[int]*model.WingPravnoLice {
 			Email:        "adresa@mail.com",
 			BrojTelefona: "063/0000000",
 		},
-		1: &model.WingPravnoLice{
+		1: &mod.WingPravnoLice{
 			Id:             0,
 			DugiNaziv:      "PREDUZEĆE ZA PROIZVODNJU, PROMET I USLUGE ENERGOTEHNA DOO, NOVI SAD",
 			Naziv:          "ENERGOTEHNA DOO NOVI SAD",
@@ -58,24 +58,24 @@ func lica() map[int]*model.WingPravnoLice {
 			PIB:            "104202125",
 			DatumOsnivanja: "28.11.2005.",
 			Delatnost:      "Izgradnja cevovoda",
-			Racuni: []model.WingBankaRacun{
-				model.WingBankaRacun{
+			Racuni: []mod.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0002024302784-84",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0000000017631-17",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0000000005685-62",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Halkbank a.d. Beograd",
 					Racun: "155-1000000031626-42",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Halkbank a.d. Beograd",
 					Racun: "155-0000000021603-94",
 				},
@@ -83,7 +83,7 @@ func lica() map[int]*model.WingPravnoLice {
 			Email:        "adresa@mail.com",
 			BrojTelefona: "063/0000000",
 		},
-		2: &model.WingPravnoLice{
+		2: &mod.WingPravnoLice{
 			Id:             0,
 			Naziv:          "DAVID NICHOLAS VENNIK PR ZORA MREŽA",
 			DugiNaziv:      "DAVID NICHOLAS VENNIK PR RAČUNARSKO PROGRAMIRANJE ZORA MREŽA NOVI SAD",
@@ -93,16 +93,16 @@ func lica() map[int]*model.WingPravnoLice {
 			Grad:           "21000 Novi Sad",
 			DatumOsnivanja: "15.5.2017.",
 			Delatnost:      "Računarsko programiranje",
-			Racuni: []model.WingBankaRacun{
-				model.WingBankaRacun{
+			Racuni: []mod.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Erste Bank a.d. Novi Sad",
 					Racun: "340-0000013019687-53",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Erste Bank a.d. Novi Sad",
 					Racun: "340-0000011419079-86",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Erste Bank a.d. Novi Sad",
 					Racun: "340-0000010025142-33",
 				},
@@ -110,7 +110,7 @@ func lica() map[int]*model.WingPravnoLice {
 			Email:        "adresa@mail.com",
 			BrojTelefona: "063/0000000",
 		},
-		3: &model.WingPravnoLice{
+		3: &mod.WingPravnoLice{
 			Id:             0,
 			Naziv:          "PROMONT-PRODANOVIĆ",
 			DugiNaziv:      "SZR PROMONT-PRODANOVIĆ PRODANOVIĆ RADIVOJ PREDUZETNIK NOVI SAD",
@@ -120,12 +120,12 @@ func lica() map[int]*model.WingPravnoLice {
 			Grad:           "21000 Novi Sad",
 			DatumOsnivanja: "25.5.1999.",
 			Delatnost:      "Proizvodnja ostalih mašina i aparata opšte namene",
-			Racuni: []model.WingBankaRacun{
-				model.WingBankaRacun{
+			Racuni: []mod.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "NLB banka a.d. Beograd",
 					Racun: "310-0000000222227-19",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "NLB banka a.d. Beograd",
 					Racun: "310-0000000007977-47",
 				},
@@ -133,7 +133,7 @@ func lica() map[int]*model.WingPravnoLice {
 			Email:        "adresa@mail.com",
 			BrojTelefona: "063/0000000",
 		},
-		4: &model.WingPravnoLice{
+		4: &mod.WingPravnoLice{
 			Id:             0,
 			Naziv:          "CESLA IB INVEST DOO NOVI SAD",
 			DugiNaziv:      "CESLA IB INVEST DOO ZA TRGOVINU, GRAĐEVINARSTVO I USLUGE, NOVI SAD",
@@ -143,24 +143,24 @@ func lica() map[int]*model.WingPravnoLice {
 			Grad:           "21000 Novi Sad",
 			DatumOsnivanja: "11.11.2003.",
 			Delatnost:      "Ostali nepomenuti specifični građevinski radovi",
-			Racuni: []model.WingBankaRacun{
-				model.WingBankaRacun{
+			Racuni: []mod.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "ProCredit Bank a.d. Beograd",
 					Racun: "220-2058000000030-91",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "ProCredit Bank a.d. Beograd",
 					Racun: "220-0000000147006-36",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "ProCredit Bank a.d. Beograd",
 					Racun: "220-0000000012130-77",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Banca Intesa a.d. Beograd",
 					Racun: "160-0053600000825-49",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Banca Intesa a.d. Beograd",
 					Racun: "160-0000000109180-08",
 				},
@@ -168,7 +168,7 @@ func lica() map[int]*model.WingPravnoLice {
 			Email:        "adresa@mail.com",
 			BrojTelefona: "063/0000000",
 		},
-		5: &model.WingPravnoLice{
+		5: &mod.WingPravnoLice{
 			Id:             0,
 			Naziv:          "TEL-ING DOO NOVI SAD",
 			DugiNaziv:      "TEL-ING DOO ZA TRGOVINU I USLUGE NOVI SAD",
@@ -178,25 +178,25 @@ func lica() map[int]*model.WingPravnoLice {
 			Grad:           "21000 Novi Sad",
 			DatumOsnivanja: "9.11.2007.",
 			Delatnost:      "Postavljanje električnih instalacija",
-			Racuni: []model.WingBankaRacun{
-				model.WingBankaRacun{
+			Racuni: []mod.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Unicredit Bank Srbija a.d. Beograd",
 					Racun: "170-0030018578000-27",
 				},
 
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0007010458727-31",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Banca Intesa a.d. Beograd",
 					Racun: "60-6000000224495-35",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Banca Intesa a.d. Beograd",
 					Racun: "160-0050100237978-54",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Banca Intesa a.d. Beograd",
 					Racun: "160-0000000331525-42",
 				},
@@ -204,7 +204,7 @@ func lica() map[int]*model.WingPravnoLice {
 			Email:        "adresa@mail.com",
 			BrojTelefona: "063/0000000",
 		},
-		6: &model.WingPravnoLice{
+		6: &mod.WingPravnoLice{
 			Id:             0,
 			Naziv:          "DON DON DOO BEOGRAD",
 			DugiNaziv:      "PRIVREDNO DRUŠTVO ZA PROIZVODNJU HLEBA I PECIVA DON DON DOO BEOGRAD",
@@ -214,24 +214,24 @@ func lica() map[int]*model.WingPravnoLice {
 			Grad:           "11070 NOVI BEOGRAD",
 			DatumOsnivanja: "13.2.2008.",
 			Delatnost:      "Proizvodnja hleba, svežeg peciva i kolača",
-			Racuni: []model.WingBankaRacun{
-				model.WingBankaRacun{
+			Racuni: []mod.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Societe Generale banka Srbija a.d. Beograd",
 					Racun: "275-0010221286932-18",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Societe Generale banka Srbija a.d. Beograd",
 					Racun: "275-0010221286916-66",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Unicredit Bank Srbija a.d. Beograd",
 					Racun: "170-0030013281320-12",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Unicredit Bank Srbija a.d. Beograd",
 					Racun: "170-0030013281000-02",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Agroindustrijska komercijalna banka - AIK banka a.d. Niš",
 					Racun: "105-0510120009916-12",
 				},
@@ -239,7 +239,7 @@ func lica() map[int]*model.WingPravnoLice {
 			Email:        "adresa@mail.com",
 			BrojTelefona: "063/0000000",
 		},
-		7: &model.WingPravnoLice{
+		7: &mod.WingPravnoLice{
 			Id:             0,
 			Naziv:          "DOO ŠUŠA VETERNIK",
 			DugiNaziv:      "DOO ŠUŠA ZA GRAĐEVINARSTVO, TRGOVINU I USLUGE VETERNIK",
@@ -249,24 +249,24 @@ func lica() map[int]*model.WingPravnoLice {
 			Grad:           "21203 Veternik",
 			DatumOsnivanja: "ccccccccccccc",
 			Delatnost:      "ccccccccccccc",
-			Racuni: []model.WingBankaRacun{
-				model.WingBankaRacun{
+			Racuni: []mod.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Ministarstvo finansija - Uprava za trezor",
 					Racun: "840-0000023864763-84",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Komercijalna banka a.d. Beograd",
 					Racun: "205-0070100423764-67",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Komercijalna banka a.d. Beograd",
 					Racun: "205-0000000182955-49",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Banca Intesa a.d. Beograd",
 					Racun: "160-6000000223443-87",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Banca Intesa a.d. Beograd",
 					Racun: "160-0050170161774-90",
 				},
@@ -274,7 +274,7 @@ func lica() map[int]*model.WingPravnoLice {
 			Email:        "adresa@mail.com",
 			BrojTelefona: "063/0000000",
 		},
-		8: &model.WingPravnoLice{
+		8: &mod.WingPravnoLice{
 			Id:             0,
 			Naziv:          "URBANS INVEST DOO NOVI SAD",
 			DugiNaziv:      "URBANS INVEST DOO ZA GRAĐEVINARSTVO, UNUTRAŠNJU I SPOLJNU TRGOVINU NOVI SAD",
@@ -284,24 +284,24 @@ func lica() map[int]*model.WingPravnoLice {
 			Grad:           "21000 Novi Sad",
 			DatumOsnivanja: "20.5.2008.",
 			Delatnost:      "Izgradnja stambenih i nestambenih zgrada",
-			Racuni: []model.WingBankaRacun{
-				model.WingBankaRacun{
+			Racuni: []mod.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0007011600535-65",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0007011534435-97",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0007011534408-81",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0007011534378-74",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0002024305088-59",
 				},
@@ -309,7 +309,7 @@ func lica() map[int]*model.WingPravnoLice {
 			Email:        "adresa@mail.com",
 			BrojTelefona: "063/0000000",
 		},
-		9: &model.WingPravnoLice{
+		9: &mod.WingPravnoLice{
 			Id:             0,
 			Naziv:          "DREAM HOME REAL ESTATE DOO NOVI SAD",
 			DugiNaziv:      "DREAM HOME REAL ESTATE DOO NOVI SAD",
@@ -319,24 +319,24 @@ func lica() map[int]*model.WingPravnoLice {
 			Grad:           "21000 Novi Sad",
 			DatumOsnivanja: "4.4.2017.",
 			Delatnost:      "Izgradnja stambenih i nestambenih zgrada",
-			Racuni: []model.WingBankaRacun{
-				model.WingBankaRacun{
+			Racuni: []mod.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Raiffeisen banka a.d. Beograd",
 					Racun: "265-1000000186611-05",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0007009210509-97",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0007009210479-90",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0007009210444-98",
 				},
-				model.WingBankaRacun{
+				mod.WingBankaRacun{
 					Banka: "Addiko Bank a.d. Beograd",
 					Racun: "165-0007009210417-82",
 				},

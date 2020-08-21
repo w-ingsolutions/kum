@@ -2,6 +2,7 @@ package calc
 
 import (
 	"github.com/w-ingsolutions/c/model"
+	"github.com/w-ingsolutions/kum/mod"
 )
 
 func (w *WingCal) SumaRacunica() {
@@ -17,14 +18,14 @@ func (w *WingCal) SumaRacunica() {
 
 func (w *WingCal) PrikazaniElementSumaRacunica() func() {
 	return func() {
-		prikazaniElementSumaCena = w.PrikazaniElement.Cena * float64(w.UI.Counters.Kolicina.Value)
+		prikazaniElementSumaCena = w.PrikazaniElement.Struct["Cena"].Content.(float64) * float64(w.UI.Counters.Kolicina.Value)
 	}
 }
 
 func (w *WingCal) ProjekatRacunica() func() {
 	return func() {
 		p := w.Suma
-		iz := []*model.WingIzabraniElement{}
+		iz := []*mod.WingIzabraniElement{}
 		for _, e := range w.Suma.Elementi {
 			ee := e
 			ee.SumaCena = e.SumaCena * float64(w.UI.Counters.Radovi.Value) / 100
@@ -57,22 +58,22 @@ func (w *WingCal) NeophodanMaterijal() {
 	ukupanNeophodniMaterijal := make(map[int]model.WingNeophodanMaterijal)
 	unm := make(map[int]model.WingNeophodanMaterijal)
 	sumaCena := 0.0
-	for _, e := range w.Suma.Elementi {
-		ukupnaCenaMaterijala := 0.0
-		for _, pojedinacniMaterijalSume := range e.Element.NeophodanMaterijal {
-			materijal := model.WingNeophodanMaterijal{
-				Id:        pojedinacniMaterijalSume.Id,
-				Materijal: *w.Materijal[pojedinacniMaterijalSume.Id-1],
-			}
-			k := materijal.Materijal.Potrosnja * float64(e.Kolicina) * pojedinacniMaterijalSume.Koeficijent
-			materijal.Kolicina = ukupanNeophodniMaterijal[pojedinacniMaterijalSume.Id].Kolicina + k
-			ukupnaCena := materijal.Kolicina * materijal.Materijal.Cena
-			materijal.UkupnaCena = ukupnaCena
-			materijal.UkupnoPakovanja = int(k / float64(materijal.Materijal.Pakovanje))
-			ukupanNeophodniMaterijal[pojedinacniMaterijalSume.Id] = materijal
-			ukupnaCenaMaterijala = ukupnaCenaMaterijala + ukupnaCena
-		}
-	}
+	//for _, e := range w.Suma.Elementi {
+	//ukupnaCenaMaterijala := 0.0
+	//for _, pojedinacniMaterijalSume := range e.Element.Struct["NeophodanMaterijal"].Content.() {
+	//	materijal := model.WingNeophodanMaterijal{
+	//		Id:        pojedinacniMaterijalSume.Id,
+	//		Materijal: *w.Materijal[pojedinacniMaterijalSume.Id-1],
+	//	}
+	//	k := materijal.Materijal.Potrosnja * float64(e.Kolicina) * pojedinacniMaterijalSume.Koeficijent
+	//	materijal.Kolicina = ukupanNeophodniMaterijal[pojedinacniMaterijalSume.Id].Kolicina + k
+	//	ukupnaCena := materijal.Kolicina * materijal.Materijal.Cena
+	//	materijal.UkupnaCena = ukupnaCena
+	//	materijal.UkupnoPakovanja = int(k / float64(materijal.Materijal.Pakovanje))
+	//	ukupanNeophodniMaterijal[pojedinacniMaterijalSume.Id] = materijal
+	//	ukupnaCenaMaterijala = ukupnaCenaMaterijala + ukupnaCena
+	//}
+	//}
 	for _, m := range ukupanNeophodniMaterijal {
 		sumaCena = sumaCena + m.UkupnaCena
 	}
