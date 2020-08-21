@@ -122,10 +122,15 @@ func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l model.ElementMenu) {
 			fmt.Println("11111311")
 			fmt.Println("11111131lHash", l.Hash)
 			fmt.Println("11111131lTitle", l.Title)
-			w.UcitajRadovePodKategorija(l.Hash)
+			w.UcitajPodKategorijuRadova(l.Hash)
+
 		}
 		if len(w.Putanja) == 2 {
 			fmt.Println("2222222")
+			fmt.Println("222222231lHash", l.Hash)
+			fmt.Println("2222222131lTitle", l.Title)
+
+			w.UcitajElemente(l.Icon, l.Hash)
 			//w.APIpozivElementi("radovi/" + komanda)
 		}
 		if len(w.Putanja) == 3 {

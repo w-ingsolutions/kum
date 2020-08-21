@@ -16,88 +16,92 @@ func (w *WingCal) UcitajRadove(hash, name string) {
 	r := w.Jdb.ReadList(hash)
 	for _, folder := range r {
 		if folder.Name == name {
-			w.UcitajRadoveZ(folder.Cid.String())
+			w.UcitajPodKategorijuRadova(folder.Cid.String())
 		}
-		//fmt.Println("folder>>>>", folder.Cid.String())
 	}
-	//fmt.Println("radoviradoviradovi", radovi)
-
 }
 
-func (w *WingCal) UcitajRadoveZ(hash string) {
-	radovi := map[int]model.ElementMenu{}
+func (w *WingCal) UcitajPodKategorijuRadova(hash string) {
+	var rdv []model.ElementMenu
+	radovi := make(map[int]model.ElementMenu)
 	radoviDb := w.Jdb.ReadList(hash)
 	for _, rad := range radoviDb {
-		vrstaRadovaDb := w.Jdb.ReadList(rad.Cid.String())
-		for _, vrstaRadova := range vrstaRadovaDb {
-			fmt.Println("vrstaRadsssova", vrstaRadova.Name)
-			if vrstaRadova.Name == "φ" {
-				var item phi.C
-				w.Jdb.Read(vrstaRadova.Cid.String(), &item)
-				radovi[item.ID-1] = model.ElementMenu{
-					Id:        item.ID,
-					Title:     item.Title,
-					Slug:      item.Slug,
-					Materijal: false,
-					Link:      new(widget.Clickable),
-					Icon:      mustIcon(widget.NewIcon(item.Icon)),
-					Hash:      rad.Cid.String(),
-				}
-			}
+		rdv = append(rdv, w.UcitajVrsteRadova(rad.Cid.String()))
+	}
+	for _, r := range rdv {
+		if r.Id > 0 {
+			radovi[r.Id-1] = r
 		}
 	}
 	w.IzbornikRadova = radovi
+	//
+	//fmt.Println("IzbornikRadova--------><", w.IzbornikRadova)
+	//fmt.Println("--------------------------------------------------------------------------------------------------------------")
+	//fmt.Println("radovi--------><", radovi)
 	return
 }
 
-func (w *WingCal) UcitajVrsteRadova(hash string) map[int]model.ElementMenu {
-	radovi := map[int]model.ElementMenu{}
+func (w *WingCal) UcitajElemente(icon *widget.Icon, hash string) {
+	var rdv []model.ElementMenu
+	radovi := make(map[int]model.ElementMenu)
+	radoviDb := w.Jdb.ReadList(hash)
+	for _, rad := range radoviDb {
+		if rad.Name != "φ" {
+			fmt.Println("Izbffffffffff--------><", rad.Name)
+			fmt.Println("IzbffCidCidCidCidfff--------><", rad.Cid.String())
+			//rdv = append(rdv, w.UcitajElement(icon, rad.Cid.String()))
+		}
+	}
+
+	for _, r := range rdv {
+		if r.Id > 0 {
+			radovi[r.Id-1] = r
+		}
+	}
+
+	w.IzbornikRadova = radovi
+	//
+	//fmt.Println("IzbornikRadova--------><", w.IzbornikRadova)
+	//fmt.Println("--------------------------------------------------------------------------------------------------------------")
+	//fmt.Println("radovi--------><", radovi)
+	return
+}
+
+func (w *WingCal) UcitajVrsteRadova(hash string) (r model.ElementMenu) {
 	vrstaRadovaDb := w.Jdb.ReadList(hash)
 	for _, vrstaRadova := range vrstaRadovaDb {
-		fmt.Println("vrstaRadova", vrstaRadova.Name)
 		if vrstaRadova.Name == "φ" {
 			var item phi.C
 			w.Jdb.Read(vrstaRadova.Cid.String(), &item)
-			radovi[item.ID-1] = model.ElementMenu{
+			fmt.Println("itemTitle,", item.Title)
+			r = model.ElementMenu{
 				Id:        item.ID,
 				Title:     item.Title,
 				Slug:      item.Slug,
 				Materijal: false,
 				Link:      new(widget.Clickable),
 				Icon:      mustIcon(widget.NewIcon(item.Icon)),
-				//Hash:      rad.Cid.String(),
+				Hash:      hash,
 			}
 		}
 	}
-	return radovi
+	return
 }
 
-func (w *WingCal) UcitajRadovePodKategorija(hash string) {
-	//radovi := map[int]model.ElementMenu{}
-	//vrstaRadovaDb := w.Jdb.ReadList(hash)
-
-	//for _, vrstaRadova := range vrstaRadovaDb {
-	//	//	//fmt.Println("vrstaRadova", vrstaRadova.Name)
-	//	//	if vrstaRadova.Name == "φ" {
-	//	//		var item phi.C
-	//	//		w.Jdb.Read(vrstaRadova.Cid.String(), &item)
-	//	//		radovi[item.ID-1] = model.ElementMenu{
-	//	//			Id:        item.ID,
-	//	//			Title:     item.Title,
-	//	//			Slug:      item.Slug,
-	//	//			Materijal: false,
-	//	//			Link:      new(widget.Clickable),
-	//	//			Icon:      mustIcon(widget.NewIcon(item.Icon)),
-	//	//			Hash:      vrstaRadova.Cid.String(),
-	//	//		}
-	//	fmt.Println("rad>>>>", vrstaRadova.Name)
-	fmt.Println("radCCCC>>>>", hash)
-	//	//	}
-	//}
-	w.UcitajRadoveZ(hash)
-
-	//fmt.Println("radoviradoviradovi", vrstaRadovaDb)
-	//w.IzbornikRadova = radovi
+func (w *WingCal) UcitajElement(icon *widget.Icon, hash string) (r model.ElementMenu) {
+	var item phi.Φ
+	w.Jdb.Read(hash, &item)
+	fmt.Println("itemTitle,", item.Struct["Title"])
+	r = model.ElementMenu{
+		Id:        item.ID,
+		Title:     item.Struct["Title"].Title,
+		Slug:      item.Struct["Slug"].Title,
+		Materijal: false,
+		Link:      new(widget.Clickable),
+		Icon:      icon,
+		Hash:      hash,
+	}
+	return
 }
 
 func (w *WingCal) APIpozivElementi(komanda string) {
