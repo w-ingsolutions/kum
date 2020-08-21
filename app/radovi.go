@@ -6,8 +6,8 @@ import (
 	"gioui.org/unit"
 	"github.com/gioapp/gel/helper"
 	"github.com/gioapp/gel/icontextbtn"
-	"github.com/w-ingsolutions/c/model"
 	"github.com/w-ingsolutions/c/pkg/lyt"
+	"github.com/w-ingsolutions/kum/mod"
 )
 
 func (w *WingCal) IzborVrsteRadova() func(gtx C) D {
@@ -118,7 +118,7 @@ func (w *WingCal) fvBtnLinks(a, b, c, d, e, f, g, h func(gtx C) D) func(gtx C) D
 	}
 }
 
-func (w *WingCal) btnLink(r model.ElementMenu) func(gtx C) D {
+func (w *WingCal) btnLink(r mod.ElementMenu) func(gtx C) D {
 	return func(gtx C) D {
 		btn := icontextbtn.IconTextBtn(w.UI.Tema.T, r.Link, w.UI.Tema.Icons[r.Slug], unit.Dp(48), w.UI.Tema.Colors["Light"], fmt.Sprint(r.Id)+". "+w.text(r.Title))
 		switch w.UI.Device {

@@ -149,17 +149,17 @@ func (w *WingCal) tehnickiList(p *gofpdf.Fpdf, pagew, mleft, mright, marginCell,
 				"Šifra", fmt.Sprint(e.Id),
 			},
 			[]string{
-				"Naziv", e.Materijal.Naziv,
+				"Naziv", e.Materijal.Struct["Naziv"].Content.(string),
 			},
 			[]string{
-				"Osobine i namena", e.Materijal.OsobineNamena,
+				"Osobine i namena", e.Materijal.Struct["OsobineNamena"].Content.(string),
 			},
 			[]string{
-				"Nacin rada", e.Materijal.NacinRada,
+				"Nacin rada", e.Materijal.Struct["NacinRada"].Content.(string),
 			},
 
 			[]string{
-				"Jedinica mere", e.Materijal.JedinicaPotrosnje,
+				"Jedinica mere", e.Materijal.Struct["JedinicaPotrosnje"].Content.(string),
 			},
 		}
 		for _, row := range rows {
@@ -335,16 +335,16 @@ func (w *WingCal) specifikacijaMaterijalaList(p *gofpdf.Fpdf, pagew, mleft, mrig
 				"Šifra", fmt.Sprint(e.Id),
 			},
 			[]string{
-				"Naziv", e.Materijal.Naziv,
+				"Naziv", e.Materijal.Struct["Naziv"].Content.(string),
 			},
 			//[]string{
 			//	"Osobine i namena", e.Materijal.OsobineNamena,
 			//},
 			[]string{
-				"Jedinica mere", e.Materijal.JedinicaPotrosnje,
+				"Jedinica mere", e.Materijal.Struct["JedinicaPotrosnje"].Content.(string),
 			},
 			[]string{
-				"Jedinična cena", fmt.Sprint(e.Materijal.Cena),
+				"Jedinična cena", e.Materijal.Struct["Cena"].Content.(string),
 			},
 			[]string{
 				"Količina", fmt.Sprint(e.Kolicina),
@@ -398,7 +398,7 @@ func (w *WingCal) materijalSuma(p *gofpdf.Fpdf, pagew, mleft, mright, marginCell
 		//rows := [][]string{}
 		rows := [][]string{
 			[]string{
-				fmt.Sprint(e.Id), e.Materijal.Naziv,
+				fmt.Sprint(e.Id), e.Materijal.Struct["Naziv"].Content.(string),
 			},
 		}
 		for _, row := range rows {

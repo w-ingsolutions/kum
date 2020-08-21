@@ -1,7 +1,6 @@
 package calc
 
 import (
-	"github.com/w-ingsolutions/c/model"
 	"github.com/w-ingsolutions/kum/mod"
 )
 
@@ -55,13 +54,13 @@ func (w *WingCal) ProjekatSumaRacunica() func() {
 }
 
 func (w *WingCal) NeophodanMaterijal() {
-	ukupanNeophodniMaterijal := make(map[int]model.WingNeophodanMaterijal)
-	unm := make(map[int]model.WingNeophodanMaterijal)
+	ukupanNeophodniMaterijal := make(map[int]mod.WingNeophodanMaterijal)
+	unm := make(map[int]mod.WingNeophodanMaterijal)
 	sumaCena := 0.0
 	//for _, e := range w.Suma.Elementi {
 	//ukupnaCenaMaterijala := 0.0
 	//for _, pojedinacniMaterijalSume := range e.Element.Struct["NeophodanMaterijal"].Content.() {
-	//	materijal := model.WingNeophodanMaterijal{
+	//	materijal := mod.WingNeophodanMaterijal{
 	//		Id:        pojedinacniMaterijalSume.Id,
 	//		Materijal: *w.Materijal[pojedinacniMaterijalSume.Id-1],
 	//	}

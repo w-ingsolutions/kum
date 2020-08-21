@@ -46,7 +46,7 @@ func (w *WingCal) strana(gtx C) func(gtx C) D {
 	var s func(gtx C) D
 	prikazani := func(gtx C) D { return D{} }
 	if w.Element {
-		prikazani = w.PrikazaniElementSuma()
+		//prikazani = w.PrikazaniElementSuma()
 	}
 	izbornikStrana := w.Panel(w.text("Radovi"), func(gtx C) D { return D{} }, w.IzbornikRadovaStrana(), prikazani)
 	podesavanjaStrana := w.Panel(w.text("Podešavanja"), func(gtx C) D { return D{} }, w.PodesavanjaStrana(), w.sumaFooter(w.text("Podešavanja")))

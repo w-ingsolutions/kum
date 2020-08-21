@@ -70,9 +70,9 @@ func (w *WingCal) PrikazaniElementIzgled() func(gtx C) D {
 			material.Caption(w.UI.Tema.T, w.text(w.PrikazaniElement.Struct["Obracun"].Content.(string))).Layout,
 			neophodanNaslov.Layout,
 			helper.DuoUIline(false, 4, 0, 4, w.UI.Tema.Colors["Secondary"]),
-			w.PrikazaniElementStavkeMaterijala(),
+			//w.PrikazaniElementStavkeMaterijala(),
 			helper.DuoUIline(false, 4, 0, 2, w.UI.Tema.Colors["Primary"]),
-			w.RadNeophodanMaterijal(neophodanMaterijalList),
+			//w.RadNeophodanMaterijal(neophodanMaterijalList),
 		}
 		return elementOpis.Layout(gtx, len(widgets), func(gtx C, i int) D {
 			return layout.UniformInset(unit.Dp(8)).Layout(gtx, widgets[i])

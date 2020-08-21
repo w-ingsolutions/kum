@@ -3,29 +3,22 @@ package calc
 import (
 	"fmt"
 	"gioui.org/widget"
-	"github.com/w-ingsolutions/c/model"
 	"github.com/w-ingsolutions/cms/pkg/phi"
+	"github.com/w-ingsolutions/kum/mod"
 )
 
-func (w *WingCal) UcitajRadove(hash, name string) {
-	fmt.Println("hashhash--------><", hash)
-
+func (w *WingCal) UcitajRadove(hash string) {
 	r := w.Jdb.ReadList(hash)
-	fmt.Println("rrrrrrrrrrrrrrr--------><", r)
-
 	for _, folder := range r {
-		if folder.Name == name {
+		if folder.Name == "radovi" {
 			w.UcitajPodKategorijuRadova(folder.Cid.String())
-
-			fmt.Println("ffffffffff--------><", folder.Cid.String())
-			fmt.Println("--------------------------------------------------------------------------------------------------------------")
 		}
 	}
 }
 
 func (w *WingCal) UcitajPodKategorijuRadova(hash string) {
-	var rdv []model.ElementMenu
-	radovi := make(map[int]model.ElementMenu)
+	var rdv []mod.ElementMenu
+	radovi := make(map[int]mod.ElementMenu)
 	radoviDb := w.Jdb.ReadList(hash)
 	for _, rad := range radoviDb {
 		rdv = append(rdv, w.UcitajVrsteRadova(rad.Cid.String()))
@@ -44,39 +37,31 @@ func (w *WingCal) UcitajPodKategorijuRadova(hash string) {
 }
 
 func (w *WingCal) UcitajElemente(icon *widget.Icon, hash string) {
-	var rdv []model.ElementMenu
-	radovi := make(map[int]model.ElementMenu)
+	var rdv []mod.ElementMenu
+	radovi := make(map[int]mod.ElementMenu)
 	radoviDb := w.Jdb.ReadList(hash)
 	for _, rad := range radoviDb {
 		if rad.Name != "φ" {
-			fmt.Println("Izbffffffffff--------><", rad.Name)
-			fmt.Println("IzbffCidCidCidCidfff--------><", rad.Cid.String())
 			rdv = append(rdv, w.UcitajElementMenu(icon, rad.Cid.String()))
 		}
 	}
-
 	for _, r := range rdv {
 		if r.Id > 0 {
 			radovi[r.Id-1] = r
 		}
 	}
-
 	w.IzbornikRadova = radovi
-	//
-	//fmt.Println("IzbornikRadova--------><", w.IzbornikRadova)
-	//fmt.Println("--------------------------------------------------------------------------------------------------------------")
-	//fmt.Println("radovi--------><", radovi)
 	return
 }
 
-func (w *WingCal) UcitajVrsteRadova(hash string) (r model.ElementMenu) {
+func (w *WingCal) UcitajVrsteRadova(hash string) (r mod.ElementMenu) {
 	vrstaRadovaDb := w.Jdb.ReadList(hash)
 	for _, vrstaRadova := range vrstaRadovaDb {
 		if vrstaRadova.Name == "φ" {
 			var item phi.C
 			w.Jdb.Read(vrstaRadova.Cid.String(), &item)
 			fmt.Println("itemTitle,", item.Title)
-			r = model.ElementMenu{
+			r = mod.ElementMenu{
 				Id:        item.ID,
 				Title:     item.Title,
 				Slug:      item.Slug,
@@ -90,11 +75,11 @@ func (w *WingCal) UcitajVrsteRadova(hash string) (r model.ElementMenu) {
 	return
 }
 
-func (w *WingCal) UcitajElementMenu(icon *widget.Icon, hash string) (r model.ElementMenu) {
+func (w *WingCal) UcitajElementMenu(icon *widget.Icon, hash string) (r mod.ElementMenu) {
 	var item phi.Φ
 	w.Jdb.Read(hash, &item)
 	fmt.Println("itemTitle,", item.Struct["Title"])
-	r = model.ElementMenu{
+	r = mod.ElementMenu{
 		Id:        item.ID,
 		Title:     (item.Struct["Title"].Content).(string),
 		Slug:      (item.Struct["Slug"].Content).(string),
@@ -110,6 +95,42 @@ func (w *WingCal) UcitajElement(icon *widget.Icon, hash string) {
 	var rad phi.Φ
 	w.Jdb.Read(hash, &rad)
 	w.PrikazaniElement = rad
+
+	fmt.Println("radr33333333333333adrad", rad)
+
+	return
+}
+
+func (w *WingCal) UcitajMaterijale(hash string) {
+	r := w.Jdb.ReadList(hash)
+	for _, folder := range r {
+		if folder.Name == "materijali" {
+			fmt.Println("CidCidCidCid", folder.Cid.String())
+
+			//w.UcitajMaterijal(folder.Cid.String())
+		}
+	}
+}
+
+func (w *WingCal) UcitajMaterijal(hash string) {
+	//var mat []phi.Φ
+	materijali := make(map[int]phi.Φ)
+	materijaliDb := w.Jdb.ReadList(hash)
+	for _, materijal := range materijaliDb {
+		if materijal.Name != "φ" {
+			var m phi.Φ
+			w.Jdb.Read(hash, &m)
+			//materijali[m.ID-1] = m
+
+			fmt.Println("00000000000000")
+			fmt.Println("00000000000000")
+			fmt.Println("mmmmmmmmmm", m)
+			fmt.Println("00000000000000")
+			fmt.Println("00000000000000")
+
+		}
+	}
+	w.Materijal = materijali
 	return
 }
 

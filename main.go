@@ -22,7 +22,8 @@ func main() {
 		fmt.Println("running initial sync")
 	}
 	in.Init(w.Podesavanja.File)
-	w.UcitajRadove("QmfW5ucnqNSduTnd1rZdrjsSUmADHboaPukkRghAidptsN", "radovi")
+	w.UcitajRadove("QmY7xLQfkxHYLjEEJyT8c9Hbityqb3jho2Wj1qX1kB7PuB")
+	w.UcitajMaterijale("QmY7xLQfkxHYLjEEJyT8c9Hbityqb3jho2Wj1qX1kB7PuB")
 
 	//w.GenerisanjeLinkova(w.IzbornikRadova)
 

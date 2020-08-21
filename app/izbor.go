@@ -10,8 +10,8 @@ import (
 	"github.com/gioapp/gel/helper"
 	"github.com/gioapp/gel/icontextbtn"
 	"github.com/gioapp/gel/panel"
-	"github.com/w-ingsolutions/c/model"
 	"github.com/w-ingsolutions/c/pkg/lyt"
+	"github.com/w-ingsolutions/kum/mod"
 )
 
 var (
@@ -97,7 +97,7 @@ func (w *WingCal) Izbornik() func(gtx C) D {
 //btn.Layout(w.Context, w.LinkoviIzboraVrsteRadova[i])
 //layout.Rigid(w.Tema.DuoUIline(w.Context, 0, 0, 0, w.Tema.Colors["Gray"])),
 
-func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l model.ElementMenu) {
+func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l mod.ElementMenu) {
 	for l.Link.Clicked() {
 		fmt.Println("IZBOR", l.Title)
 

@@ -11,7 +11,6 @@ import (
 	"gioui.org/widget"
 	"github.com/gioapp/gel/counter"
 	"github.com/gioapp/gel/theme"
-	"github.com/w-ingsolutions/c/model"
 	"github.com/w-ingsolutions/c/pkg/cache"
 	"github.com/w-ingsolutions/c/pkg/translate"
 	"github.com/w-ingsolutions/kum/pkg/jdb"
@@ -23,12 +22,12 @@ type (
 )
 
 var (
-	//post             = new(model.DuoCMSpost)
+	//post             = new(mod.DuoCMSpost)
 	prikazaniElementSumaCena float64
 	selected                 int
 	projekat                 = &mod.WingProjekat{
-		//Materijal: make(map[int]model.WingNeophodanMaterijal),
-		//Elementi: new(model.WingIzabraniElementi),
+		//Materijal: make(map[int]mod.WingNeophodanMaterijal),
+		//Elementi: new(mod.WingIzabraniElementi),
 	}
 	latCyrBool = new(widget.Bool)
 
@@ -41,14 +40,14 @@ type WingCal struct {
 	ctx    context.Context
 	Jdb    *jdb.JavazacDB
 	//LinkoviIzboraVrsteRadova map[int]*widget.Clickable
-	EditPolja      *model.EditabilnaPoljaVrsteRadova
-	Materijal      map[int]*model.WingMaterijal
+	EditPolja      *mod.EditabilnaPoljaVrsteRadova
+	Materijal      map[int]phi.Φ
 	Lica           WingUloge
-	Radovi         model.WingVrstaRadova
+	Radovi         mod.WingVrstaRadova
 	Putanja        []string
-	IzbornikRadova map[int]model.ElementMenu
+	IzbornikRadova map[int]mod.ElementMenu
 
-	Transfered       model.WingCalGrupaRadova
+	Transfered       mod.WingCalGrupaRadova
 	PrikazaniElement phi.Φ
 	Suma             *mod.WingIzabraniElementi
 	Podvrsta         int

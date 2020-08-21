@@ -14,15 +14,15 @@ func (w *WingCal) MaterijalElementi() func(gtx C) D {
 			return lyt.Format(gtx, "vflexb(middle,r(inset(4dp,_)),r(_))",
 				func(gtx C) D {
 					return lyt.Format(gtx, "hflexb(middle,f(0.1,_),r(_),f(0.3,_),r(_),f(0.1,_),r(_),f(0.1,_),r(_),f(0.2,_))",
-						w.cell(text.Start, w.text(fmt.Sprint(m.Id))),
+						w.cell(text.Start, w.text(fmt.Sprint(m.ID))),
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
-						w.cell(text.Middle, w.text(m.Naziv)),
+						w.cell(text.Middle, w.text(m.Struct["Naziv"].Content.(string))),
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
-						w.cell(text.Middle, w.text(fmt.Sprint(m.Pakovanje))),
+						w.cell(text.Middle, w.text(fmt.Sprint(m.Struct["Pakovanje"].Content.(string)))),
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
-						w.cell(text.Middle, w.text(m.Jedinica)),
+						w.cell(text.Middle, w.text(m.Struct["Jedinica"].Content.(string))),
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
-						w.cell(text.End, w.text(fmt.Sprint(m.Cena))),
+						w.cell(text.End, w.text(fmt.Sprint(m.Struct["Cena"].Content.(string)))),
 					)
 				},
 				helper.DuoUIline(false, 0, 0, 1, w.UI.Tema.Colors["Gray"]))

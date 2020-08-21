@@ -9,7 +9,6 @@ import (
 	"gioui.org/widget"
 	"github.com/gioapp/gel/counter"
 	"github.com/gioapp/gel/theme"
-	"github.com/w-ingsolutions/c/model"
 	wapp "github.com/w-ingsolutions/c/pkg/app"
 	"github.com/w-ingsolutions/c/pkg/icons"
 	"github.com/w-ingsolutions/c/pkg/latcyr"
@@ -28,7 +27,7 @@ func NewWingCal() *WingCal {
 		PrikazaniElement: phi.Φ{},
 		Suma: &mod.WingIzabraniElementi{
 			Elementi:           []*mod.WingIzabraniElement{},
-			NeophodanMaterijal: make(map[int]model.WingNeophodanMaterijal),
+			NeophodanMaterijal: make(map[int]mod.WingNeophodanMaterijal),
 		},
 	}
 	w.Jdb = jdb.New(w.ctx, "datastore")
@@ -38,14 +37,13 @@ func NewWingCal() *WingCal {
 		Cyr:   false,
 	}
 	w.Podesavanja.File = filepath.Join(w.Podesavanja.Dir, "conf.json")
-	w.Materijal = db.NewMaterijal()
 	projektanti, klijenti := db.NewLica()
 	w.Lica.Projektanti = projektanti
 	w.Lica.Investotori = klijenti
 	saStraneMarginom := layout.UniformInset(unit.Dp(0))
 	saStraneMarginom.Left = unit.Dp(8)
 	saStraneMarginom.Right = unit.Dp(8)
-	w.Radovi = model.WingVrstaRadova{
+	w.Radovi = mod.WingVrstaRadova{
 		Id:       0,
 		Naziv:    "Radovi",
 		Slug:     "radovi",

@@ -74,7 +74,7 @@ func (w *WingCal) latDugme() func(gtx C) D {
 //	return btn.Layout(gtx)
 //}
 
-//func (w *WingCal) GenerisanjeLinkova(radovi map[int]model.ElementMenu) {
+//func (w *WingCal) GenerisanjeLinkova(radovi map[int]mod.ElementMenu) {
 //	for i, rad := range radovi {
 //		rad.Link = new(widget.Clickable)
 //		w.IzbornikRadova[i] = rad

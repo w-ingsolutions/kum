@@ -2,7 +2,6 @@ package mod
 
 import (
 	"gioui.org/widget"
-	"github.com/w-ingsolutions/c/model"
 	"github.com/w-ingsolutions/cms/pkg/phi"
 )
 
@@ -34,8 +33,8 @@ type WingIzabraniElementi struct {
 	SumaCena                 float64
 	SumaCenaMaterijal        float64
 	Elementi                 []*WingIzabraniElement
-	NeophodanMaterijal       map[int]model.WingNeophodanMaterijal
-	NeophodanMaterijalPrikaz map[int]model.WingNeophodanMaterijal
+	NeophodanMaterijal       map[int]WingNeophodanMaterijal
+	NeophodanMaterijalPrikaz map[int]WingNeophodanMaterijal
 }
 
 type WingCalGrupaRadova struct {
