@@ -2,6 +2,7 @@ package calc
 
 import (
 	"github.com/w-ingsolutions/kum/mod"
+	"strconv"
 )
 
 func (w *WingCal) SumaRacunica() {
@@ -17,7 +18,9 @@ func (w *WingCal) SumaRacunica() {
 
 func (w *WingCal) PrikazaniElementSumaRacunica() func() {
 	return func() {
-		prikazaniElementSumaCena = w.PrikazaniElement.Struct["Cena"].Content.(float64) * float64(w.UI.Counters.Kolicina.Value)
+		cena, err := strconv.ParseFloat(w.PrikazaniElement.Struct["Cena"].Content.(string), 64)
+		checkError(err)
+		prikazaniElementSumaCena = cena * float64(w.UI.Counters.Kolicina.Value)
 	}
 }
 

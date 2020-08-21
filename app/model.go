@@ -48,7 +48,7 @@ type WingCal struct {
 	IzbornikRadova map[int]mod.ElementMenu
 
 	Transfered       mod.WingCalGrupaRadova
-	PrikazaniElement phi.Φ
+	PrikazaniElement *phi.Φ
 	Suma             *mod.WingIzabraniElementi
 	Podvrsta         int
 	Roditelj         int

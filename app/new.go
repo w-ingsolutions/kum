@@ -24,7 +24,7 @@ func NewWingCal() *WingCal {
 	w := &WingCal{
 		Strana:           "radovi",
 		ctx:              context.Background(),
-		PrikazaniElement: phi.Φ{},
+		PrikazaniElement: &phi.Φ{},
 		Suma: &mod.WingIzabraniElementi{
 			Elementi:           []*mod.WingIzabraniElement{},
 			NeophodanMaterijal: make(map[int]mod.WingNeophodanMaterijal),

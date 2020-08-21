@@ -36,7 +36,7 @@ func (w *WingCal) SumaElementi(el []*mod.WingIzabraniElement) func(gtx C) D {
 				func(gtx C) D {
 					return layout.UniformInset(unit.Dp(4)).Layout(gtx, func(gtx C) D {
 						return lyt.Format(gtx, "hflexb(middle,f(0.6,_),r(_),f(0.1,_),r(_),f(0.1,_),r(_),f(0.1,_),r(_),f(0.2,_))",
-							w.cell(text.Start, w.text(element.Element.Struct["Naziv"].Content.(string))),
+							w.cell(text.Start, w.text(element.Element.Struct["Title"].Content.(string))),
 							helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
 							w.cell(text.Middle, fmt.Sprint(element.Element.Struct["Cena"].Content.(string))),
 							helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),

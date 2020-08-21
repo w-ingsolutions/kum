@@ -24,7 +24,7 @@ type WingIzabraniElement struct {
 	Sifra         string
 	Kolicina      int
 	SumaCena      float64
-	Element       phi.Φ
+	Element       *phi.Φ
 	DugmeBrisanje *widget.Clickable
 }
 
@@ -40,5 +40,5 @@ type WingIzabraniElementi struct {
 type WingCalGrupaRadova struct {
 	Id       string
 	Slug     string
-	Elementi map[int]WingVrstaRadova `json:"elementi"`
+	Elementi map[int]WingVrstaRadova
 }

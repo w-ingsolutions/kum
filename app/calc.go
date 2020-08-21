@@ -9,6 +9,7 @@ import (
 	"github.com/gioapp/gel/helper"
 	"github.com/w-ingsolutions/c/pkg/latcyr"
 	"github.com/w-ingsolutions/c/pkg/lyt"
+	"os"
 )
 
 func (w *WingCal) GlavniEkran(gtx layout.Context) {
@@ -143,4 +144,11 @@ func (w *WingCal) sumaFooter(t string) func(gtx C) D {
 func (w *WingCal) text(t string) string {
 	//return w.Kes.C(w.Jezik.t.T(latcyr.C(t, w.Podesavanja.Cyr)))
 	return w.Jezik.t.T(latcyr.C(t, w.Podesavanja.Cyr))
+}
+
+func checkError(err error) {
+	if err != nil {
+		fmt.Println("Fatal error ", err.Error())
+		os.Exit(1)
+	}
 }

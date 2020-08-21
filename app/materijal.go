@@ -16,7 +16,7 @@ func (w *WingCal) MaterijalElementi() func(gtx C) D {
 					return lyt.Format(gtx, "hflexb(middle,f(0.1,_),r(_),f(0.3,_),r(_),f(0.1,_),r(_),f(0.1,_),r(_),f(0.2,_))",
 						w.cell(text.Start, w.text(fmt.Sprint(m.ID))),
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
-						w.cell(text.Middle, w.text(m.Struct["Naziv"].Content.(string))),
+						w.cell(text.Middle, w.text(m.Struct["Title"].Content.(string))),
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
 						w.cell(text.Middle, w.text(fmt.Sprint(m.Struct["Pakovanje"].Content.(string)))),
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),

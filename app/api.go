@@ -92,7 +92,7 @@ func (w *WingCal) UcitajElementMenu(icon *widget.Icon, hash string) (r mod.Eleme
 }
 
 func (w *WingCal) UcitajElement(icon *widget.Icon, hash string) {
-	var rad phi.Φ
+	var rad *phi.Φ
 	w.Jdb.Read(hash, &rad)
 	w.PrikazaniElement = rad
 
@@ -105,9 +105,9 @@ func (w *WingCal) UcitajMaterijale(hash string) {
 	r := w.Jdb.ReadList(hash)
 	for _, folder := range r {
 		if folder.Name == "materijali" {
-			fmt.Println("CidCidCidCid", folder.Cid.String())
+			//fmt.Println("CidCidCidCid", folder.Cid.String())
 
-			//w.UcitajMaterijal(folder.Cid.String())
+			w.UcitajMaterijal(folder.Cid.String())
 		}
 	}
 }
@@ -119,14 +119,15 @@ func (w *WingCal) UcitajMaterijal(hash string) {
 	for _, materijal := range materijaliDb {
 		if materijal.Name != "φ" {
 			var m phi.Φ
-			w.Jdb.Read(hash, &m)
-			//materijali[m.ID-1] = m
+			w.Jdb.Read(materijal.Cid.String(), &m)
+			materijali[m.ID-1] = m
 
-			fmt.Println("00000000000000")
-			fmt.Println("00000000000000")
-			fmt.Println("mmmmmmmmmm", m)
-			fmt.Println("00000000000000")
-			fmt.Println("00000000000000")
+			//fmt.Println("00000000000000")
+			//fmt.Println("00000000000000")
+			//fmt.Println("mmmmmmmmmmID", m.ID)
+			//fmt.Println("mmmmmmmmmmISSSSS", m.Struct)
+			//fmt.Println("00000000000000")
+			//fmt.Println("00000000000000")
 
 		}
 	}
