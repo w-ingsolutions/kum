@@ -11,7 +11,7 @@ import (
 	"github.com/gioapp/gel/icontextbtn"
 	"github.com/gioapp/gel/panel"
 	"github.com/w-ingsolutions/c/pkg/lyt"
-	"github.com/w-ingsolutions/kum/mod"
+	"github.com/w-ingsolutions/kum/app/mod"
 )
 
 var (
@@ -112,7 +112,7 @@ func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l mod.ElementMenu) {
 			fmt.Println("2222222")
 			//komanda = Podvrstaradova + "/" + fmt.Sprint(l.Id)
 			Elementi = fmt.Sprint(l.Id)
-			w.Roditelj = l.Id
+			w.Roditelj = l.Hash
 		}
 		if len(w.Putanja) == 3 {
 			fmt.Println("3333333")

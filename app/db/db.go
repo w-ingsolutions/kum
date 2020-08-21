@@ -1,7 +1,7 @@
 package db
 
 import (
-	"github.com/w-ingsolutions/kum/mod"
+	"github.com/w-ingsolutions/kum/app/mod"
 )
 
 func NewLica() (p []*mod.WingPravnoLice, k []*mod.WingPravnoLice) {

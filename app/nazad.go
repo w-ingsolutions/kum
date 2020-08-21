@@ -20,12 +20,21 @@ func (w *WingCal) Nazad() func(gtx C) D {
 					w.Element = false
 				} else {
 					//komanda := ""
+					if len(w.Putanja) == 2 {
+						//komanda = "/" + fmt.Sprint(w.Roditelj)
+						//podvrstaradova = fmt.Sprint(w.Roditelj)
+						fmt.Println("rodddd222222222222221::", w.Roditelj)
+
+					}
 					if len(w.Putanja) == 3 {
 						//komanda = "/" + fmt.Sprint(w.Roditelj)
 						//podvrstaradova = fmt.Sprint(w.Roditelj)
-						fmt.Println("roddddditeL111::", w.Roditelj)
+						fmt.Println("roddddditeL1333311::", w.Roditelj)
+						w.UcitajPodKategorijuRadova(w.Roditelj)
 					}
 					if len(w.Putanja) == 4 {
+						fmt.Println("roddddditeL11444441::", w.Roditelj)
+
 						//komanda = "/" + Podvrstaradova + "/" + fmt.Sprint(w.Roditelj)
 					}
 					//w.UcitajRadove("QmUn3oue7CxL3ERQH26P8wQMZBmdhxrapHukg2AJwwBGEK", "radovi")

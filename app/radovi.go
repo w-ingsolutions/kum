@@ -7,7 +7,7 @@ import (
 	"github.com/gioapp/gel/helper"
 	"github.com/gioapp/gel/icontextbtn"
 	"github.com/w-ingsolutions/c/pkg/lyt"
-	"github.com/w-ingsolutions/kum/mod"
+	"github.com/w-ingsolutions/kum/app/mod"
 )
 
 func (w *WingCal) IzborVrsteRadova() func(gtx C) D {

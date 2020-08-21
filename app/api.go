@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"gioui.org/widget"
 	"github.com/w-ingsolutions/cms/pkg/phi"
-	"github.com/w-ingsolutions/kum/mod"
+	"github.com/w-ingsolutions/kum/app/mod"
 )
 
 func (w *WingCal) UcitajRadove(hash string) {
@@ -60,7 +60,7 @@ func (w *WingCal) UcitajVrsteRadova(hash string) (r mod.ElementMenu) {
 		if vrstaRadova.Name == "φ" {
 			var item phi.C
 			w.Jdb.Read(vrstaRadova.Cid.String(), &item)
-			fmt.Println("itemTitle,", item.Title)
+			//fmt.Println("itemTitle,", item.Title)
 			r = mod.ElementMenu{
 				Id:        item.ID,
 				Title:     item.Title,
@@ -78,7 +78,7 @@ func (w *WingCal) UcitajVrsteRadova(hash string) (r mod.ElementMenu) {
 func (w *WingCal) UcitajElementMenu(icon *widget.Icon, hash string) (r mod.ElementMenu) {
 	var item phi.Φ
 	w.Jdb.Read(hash, &item)
-	fmt.Println("itemTitle,", item.Struct["Title"])
+	//fmt.Println("itemTitle,", item.Struct["Title"])
 	r = mod.ElementMenu{
 		Id:        item.ID,
 		Title:     (item.Struct["Title"].Content).(string),

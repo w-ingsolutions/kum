@@ -8,8 +8,8 @@ import (
 	"gioui.org/layout"
 	"github.com/gioapp/gel/helper"
 	"github.com/w-ingsolutions/kum/app"
-	"github.com/w-ingsolutions/kum/cfg"
-	in "github.com/w-ingsolutions/kum/cfg/ini"
+	"github.com/w-ingsolutions/kum/app/cfg"
+	in "github.com/w-ingsolutions/kum/app/cfg/ini"
 	"log"
 	"os"
 )

@@ -1,7 +1,7 @@
 package calc
 
 import (
-	"github.com/w-ingsolutions/kum/mod"
+	"github.com/w-ingsolutions/kum/app/mod"
 	"strconv"
 )
 

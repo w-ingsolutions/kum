@@ -3,7 +3,7 @@ package calc
 import (
 	"context"
 	"github.com/w-ingsolutions/cms/pkg/phi"
-	"github.com/w-ingsolutions/kum/mod"
+	"github.com/w-ingsolutions/kum/app/mod"
 
 	"gioui.org/app"
 	"gioui.org/layout"
@@ -51,7 +51,7 @@ type WingCal struct {
 	PrikazaniElement *phi.Φ
 	Suma             *mod.WingIzabraniElementi
 	Podvrsta         int
-	Roditelj         int
+	Roditelj         string
 	Element          bool
 	UI               WingUI
 	API              WingAPI

@@ -14,8 +14,8 @@ import (
 	"github.com/w-ingsolutions/c/pkg/latcyr"
 	"github.com/w-ingsolutions/c/pkg/translate"
 	"github.com/w-ingsolutions/cms/pkg/phi"
-	"github.com/w-ingsolutions/kum/db"
-	"github.com/w-ingsolutions/kum/mod"
+	"github.com/w-ingsolutions/kum/app/db"
+	"github.com/w-ingsolutions/kum/app/mod"
 	"github.com/w-ingsolutions/kum/pkg/jdb"
 	"path/filepath"
 )

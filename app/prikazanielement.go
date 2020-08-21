@@ -11,7 +11,7 @@ import (
 	"github.com/gioapp/gel/helper"
 	"github.com/w-ingsolutions/c/pkg/latcyr"
 	"github.com/w-ingsolutions/c/pkg/lyt"
-	"github.com/w-ingsolutions/kum/mod"
+	"github.com/w-ingsolutions/kum/app/mod"
 	"strconv"
 )
 
