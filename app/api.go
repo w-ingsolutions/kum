@@ -13,64 +13,90 @@ import (
 )
 
 func (w *WingCal) UcitajRadove(hash, name string) {
-	radovi := map[int]model.ElementMenu{}
 	r := w.Jdb.ReadList(hash)
 	for _, folder := range r {
 		if folder.Name == name {
-			radoviDb := w.Jdb.ReadList(folder.Cid.String())
-			for _, rad := range radoviDb {
-				vrstaRadovaDb := w.Jdb.ReadList(rad.Cid.String())
-				for _, vrstaRadova := range vrstaRadovaDb {
-					//fmt.Println("vrstaRadova", vrstaRadova.Name)
-					if vrstaRadova.Name == "φ" {
-						var item phi.C
-						w.Jdb.Read(vrstaRadova.Cid.String(), &item)
-						radovi[item.ID-1] = model.ElementMenu{
-							Id:        item.ID,
-							Title:     item.Title,
-							Slug:      item.Slug,
-							Materijal: false,
-							Link:      new(widget.Clickable),
-							Icon:      mustIcon(widget.NewIcon(item.Icon)),
-							Hash:      rad.Cid.String(),
-						}
-						//fmt.Println("rad>>>>", rad.Name)
-					}
-					//fmt.Println("vrstaRadova>>>>", vrstaRadova.Cid.String())
-				}
-				fmt.Println("rad>>>>", rad.Cid.String())
-				fmt.Println("radNNNNNNN>>>", rad.Name)
-			}
+			w.UcitajRadoveZ(folder.Cid.String())
 		}
 		//fmt.Println("folder>>>>", folder.Cid.String())
 	}
 	//fmt.Println("radoviradoviradovi", radovi)
-	w.IzbornikRadova = radovi
+
 }
 
-func (w *WingCal) UcitajRadovePodKategorija(hash, name string) {
-	//radovi := map[int]model.ElementMenu{}
-	vrstaRadovaDb := w.Jdb.ReadList(hash)
-
-	for _, vrstaRadova := range vrstaRadovaDb {
-		//	//fmt.Println("vrstaRadova", vrstaRadova.Name)
-		//	if vrstaRadova.Name == "φ" {
-		//		var item phi.C
-		//		w.Jdb.Read(vrstaRadova.Cid.String(), &item)
-		//		radovi[item.ID-1] = model.ElementMenu{
-		//			Id:        item.ID,
-		//			Title:     item.Title,
-		//			Slug:      item.Slug,
-		//			Materijal: false,
-		//			Link:      new(widget.Clickable),
-		//			Icon:      mustIcon(widget.NewIcon(item.Icon)),
-		//			Hash:      vrstaRadova.Cid.String(),
-		//		}
-		fmt.Println("rad>>>>", vrstaRadova.Name)
-		fmt.Println("radCCCC>>>>", vrstaRadova.Cid)
-		//	}
+func (w *WingCal) UcitajRadoveZ(hash string) {
+	radovi := map[int]model.ElementMenu{}
+	radoviDb := w.Jdb.ReadList(hash)
+	for _, rad := range radoviDb {
+		vrstaRadovaDb := w.Jdb.ReadList(rad.Cid.String())
+		for _, vrstaRadova := range vrstaRadovaDb {
+			fmt.Println("vrstaRadsssova", vrstaRadova.Name)
+			if vrstaRadova.Name == "φ" {
+				var item phi.C
+				w.Jdb.Read(vrstaRadova.Cid.String(), &item)
+				radovi[item.ID-1] = model.ElementMenu{
+					Id:        item.ID,
+					Title:     item.Title,
+					Slug:      item.Slug,
+					Materijal: false,
+					Link:      new(widget.Clickable),
+					Icon:      mustIcon(widget.NewIcon(item.Icon)),
+					Hash:      rad.Cid.String(),
+				}
+			}
+		}
 	}
-	fmt.Println("radoviradoviradovi", vrstaRadovaDb)
+	w.IzbornikRadova = radovi
+	return
+}
+
+func (w *WingCal) UcitajVrsteRadova(hash string) map[int]model.ElementMenu {
+	radovi := map[int]model.ElementMenu{}
+	vrstaRadovaDb := w.Jdb.ReadList(hash)
+	for _, vrstaRadova := range vrstaRadovaDb {
+		fmt.Println("vrstaRadova", vrstaRadova.Name)
+		if vrstaRadova.Name == "φ" {
+			var item phi.C
+			w.Jdb.Read(vrstaRadova.Cid.String(), &item)
+			radovi[item.ID-1] = model.ElementMenu{
+				Id:        item.ID,
+				Title:     item.Title,
+				Slug:      item.Slug,
+				Materijal: false,
+				Link:      new(widget.Clickable),
+				Icon:      mustIcon(widget.NewIcon(item.Icon)),
+				//Hash:      rad.Cid.String(),
+			}
+		}
+	}
+	return radovi
+}
+
+func (w *WingCal) UcitajRadovePodKategorija(hash string) {
+	//radovi := map[int]model.ElementMenu{}
+	//vrstaRadovaDb := w.Jdb.ReadList(hash)
+
+	//for _, vrstaRadova := range vrstaRadovaDb {
+	//	//	//fmt.Println("vrstaRadova", vrstaRadova.Name)
+	//	//	if vrstaRadova.Name == "φ" {
+	//	//		var item phi.C
+	//	//		w.Jdb.Read(vrstaRadova.Cid.String(), &item)
+	//	//		radovi[item.ID-1] = model.ElementMenu{
+	//	//			Id:        item.ID,
+	//	//			Title:     item.Title,
+	//	//			Slug:      item.Slug,
+	//	//			Materijal: false,
+	//	//			Link:      new(widget.Clickable),
+	//	//			Icon:      mustIcon(widget.NewIcon(item.Icon)),
+	//	//			Hash:      vrstaRadova.Cid.String(),
+	//	//		}
+	//	fmt.Println("rad>>>>", vrstaRadova.Name)
+	fmt.Println("radCCCC>>>>", hash)
+	//	//	}
+	//}
+	w.UcitajRadoveZ(hash)
+
+	//fmt.Println("radoviradoviradovi", vrstaRadovaDb)
 	//w.IzbornikRadova = radovi
 }
 

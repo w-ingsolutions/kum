@@ -4,6 +4,7 @@ go 1.15
 
 require (
 	gioui.org v0.0.0-20200817101435-3bb1450d0d0e
+	github.com/awalterschulze/gographviz v0.0.0-20190522210029-fa59802746ab
 	github.com/bregydoc/gtranslate v0.0.0-20191225024717-45b28d4fda86 // indirect
 	github.com/gioapp/cms v0.0.0-20200807230340-6decd205679c
 	github.com/gioapp/gel v0.0.0-20200719184500-af01009f3e0f

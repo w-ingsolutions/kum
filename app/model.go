@@ -39,12 +39,13 @@ type WingCal struct {
 	ctx    context.Context
 	Jdb    *jdb.JavazacDB
 	//LinkoviIzboraVrsteRadova map[int]*widget.Clickable
-	EditPolja        *model.EditabilnaPoljaVrsteRadova
-	Materijal        map[int]*model.WingMaterijal
-	Lica             WingUloge
-	Radovi           model.WingVrstaRadova
-	Putanja          []string
-	IzbornikRadova   map[int]model.ElementMenu
+	EditPolja      *model.EditabilnaPoljaVrsteRadova
+	Materijal      map[int]*model.WingMaterijal
+	Lica           WingUloge
+	Radovi         model.WingVrstaRadova
+	Putanja        []string
+	IzbornikRadova map[int]model.ElementMenu
+
 	Transfered       model.WingCalGrupaRadova
 	PrikazaniElement *model.WingVrstaRadova
 	Suma             *model.WingIzabraniElementi
@@ -69,6 +70,17 @@ type WingUI struct {
 	Ops         op.Ops
 	Counters    WingCounters
 }
+
+//
+//type WingRadoviIzbornik struct {
+//	VrstaRadova   int
+//	PodKategorija int
+//	Element       int
+//}
+//
+//func (r *WingRadoviIzbornik)RadoviIzbornik(){
+//
+//}
 
 type WingAPI struct {
 	OK     bool

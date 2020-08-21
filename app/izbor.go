@@ -103,7 +103,7 @@ func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l model.ElementMenu) {
 
 		//komanda := fmt.Sprint(l.Id)
 		if len(w.Putanja) == 1 {
-			fmt.Println("111111")
+			fmt.Println("11111331")
 			//komanda = fmt.Sprint(l.Id)
 			Podvrstaradova = fmt.Sprint(l.Id)
 			w.Podvrsta = l.Id
@@ -119,10 +119,10 @@ func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l model.ElementMenu) {
 			//komanda = Podvrstaradova + "/" + Elementi + "/" + fmt.Sprint(l.Id)
 		}
 		if len(w.Putanja) == 1 {
-			fmt.Println("1111111")
-			fmt.Println("1111111lHash", l.Hash)
-			fmt.Println("1111111lTitle", l.Title)
-			//w.UcitajRadovePodKategorija(l.Hash, l.Title)
+			fmt.Println("11111311")
+			fmt.Println("11111131lHash", l.Hash)
+			fmt.Println("11111131lTitle", l.Title)
+			w.UcitajRadovePodKategorija(l.Hash)
 		}
 		if len(w.Putanja) == 2 {
 			fmt.Println("2222222")
