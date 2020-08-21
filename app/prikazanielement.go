@@ -4,14 +4,12 @@ import (
 	"fmt"
 	"gioui.org/layout"
 	"gioui.org/unit"
-	"gioui.org/widget"
 	"gioui.org/widget/material"
 	"github.com/gioapp/gel/container"
 	"github.com/gioapp/gel/counter"
 	"github.com/gioapp/gel/helper"
 	"github.com/w-ingsolutions/c/pkg/latcyr"
 	"github.com/w-ingsolutions/c/pkg/lyt"
-	"github.com/w-ingsolutions/kum/mod"
 )
 
 func (w *WingCal) PrikazaniElementDugmeDodaj(sumaCena float64) func(gtx C) D {
@@ -27,28 +25,28 @@ func (w *WingCal) PrikazaniElementDugmeDodaj(sumaCena float64) func(gtx C) D {
 		btn.Inset = layout.Inset{unit.Dp(8), unit.Dp(8), unit.Dp(10), unit.Dp(8)}
 		btn.Background = helper.HexARGB("ffb8df42")
 		btn.Color = helper.HexARGB(w.UI.Tema.Colors["Dark"])
-		var varijacijaRada int
-
-		for dodajDugme.Clicked() {
-			fmt.Println("kolicina.Value", w.UI.Counters.Kolicina.Value)
-			if w.UI.Counters.Kolicina.Value > 0 {
-				for _, s := range w.Suma.Elementi {
-					if s.Element.ID == w.PrikazaniElement.ID {
-						varijacijaRada = varijacijaRada + 1
-					}
-				}
-				suma := &mod.WingIzabraniElement{
-					Sifra:         fmt.Sprint(w.Podvrsta) + "." + fmt.Sprint(w.Roditelj) + "." + fmt.Sprint(w.PrikazaniElement.ID) + "." + fmt.Sprint(varijacijaRada+1),
-					Kolicina:      w.UI.Counters.Kolicina.Value,
-					SumaCena:      sumaCena,
-					Element:       w.PrikazaniElement,
-					DugmeBrisanje: new(widget.Clickable),
-				}
-				w.Suma.Elementi = append(w.Suma.Elementi, suma)
-				w.SumaRacunica()
-				w.Strana = "sumaRadovi"
-			}
-		}
+		//var varijacijaRada int
+		//
+		//for dodajDugme.Clicked() {
+		//	fmt.Println("kolicina.Value", w.UI.Counters.Kolicina.Value)
+		//	if w.UI.Counters.Kolicina.Value > 0 {
+		//		for _, s := range w.Suma.Elementi {
+		//			if s.Element.ID == w.PrikazaniElement.ID {
+		//				varijacijaRada = varijacijaRada + 1
+		//			}
+		//		}
+		//		suma := &mod.WingIzabraniElement{
+		//			Sifra:         fmt.Sprint(w.Podvrsta) + "." + fmt.Sprint(w.Roditelj) + "." + fmt.Sprint(w.PrikazaniElement.ID) + "." + fmt.Sprint(varijacijaRada+1),
+		//			Kolicina:      w.UI.Counters.Kolicina.Value,
+		//			SumaCena:      sumaCena,
+		//			Element:       w.PrikazaniElement,
+		//			DugmeBrisanje: new(widget.Clickable),
+		//		}
+		//		w.Suma.Elementi = append(w.Suma.Elementi, suma)
+		//		w.SumaRacunica()
+		//		w.Strana = "sumaRadovi"
+		//	}
+		//}
 		return btn.Layout(gtx)
 	}
 }
@@ -70,7 +68,7 @@ func (w *WingCal) PrikazaniElementIzgled() func(gtx C) D {
 			material.Caption(w.UI.Tema.T, w.text(w.PrikazaniElement.Struct["Obracun"].Content.(string))).Layout,
 			neophodanNaslov.Layout,
 			helper.DuoUIline(false, 4, 0, 4, w.UI.Tema.Colors["Secondary"]),
-			//w.PrikazaniElementStavkeMaterijala(),
+			w.PrikazaniElementStavkeMaterijala(),
 			helper.DuoUIline(false, 4, 0, 2, w.UI.Tema.Colors["Primary"]),
 			//w.RadNeophodanMaterijal(neophodanMaterijalList),
 		}
@@ -84,10 +82,11 @@ func (w *WingCal) PrikazaniElementSuma() func(gtx C) D {
 	return func(gtx C) D {
 		return container.DuoUIcontainer(w.UI.Tema, 0, w.UI.Tema.Colors["Gray"]).Layout(gtx, layout.NW, func(gtx C) D {
 			gtx.Constraints.Min.X = gtx.Constraints.Max.X
-			sumaCena := float64(w.UI.Counters.Kolicina.Value) * w.PrikazaniElement.Struct["Cena"].Content.(float64)
+			//sumaCena := float64(w.UI.Counters.Kolicina.Value) * w.PrikazaniElement.Struct["Cena"].Content.(float64)
+			sumaCena := 12.366
 			return lyt.Format(gtx, "hflexb(middle,f(1,_),r(_))",
 				func(gtx C) D {
-					return lyt.Format(gtx, "vflexb(middle,r(_),r(_),r(_))",
+					return lyt.Format(gtx, "vflexb(middle,r(_),r(_))",
 						func(gtx C) D {
 							return container.DuoUIcontainer(w.UI.Tema, 10, w.UI.Tema.Colors["LightGrayII"]).Layout(gtx, layout.NW, func(gtx C) D {
 								gtx.Constraints.Min.X = gtx.Constraints.Max.X
