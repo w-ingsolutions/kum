@@ -7,16 +7,19 @@ import (
 	"github.com/w-ingsolutions/kum/app/mod"
 )
 
-func (w *WingCal) UcitajRadove(hash string) {
+func (w *WingCal) Ucitaj(hash string) {
 	r := w.Jdb.ReadList(hash)
 	for _, folder := range r {
-		if folder.Name == "radovi" {
-			w.UcitajPodKategorijuRadova(folder.Cid.String())
+		switch folder.Name {
+		case "radovi":
+			w.UcitajRadove(folder.Cid.String())
+		case "materijali":
+			w.UcitajMaterijal(folder.Cid.String())
 		}
 	}
 }
 
-func (w *WingCal) UcitajPodKategorijuRadova(hash string) {
+func (w *WingCal) UcitajRadove(hash string) {
 	var rdv []mod.ElementMenu
 	radovi := make(map[int]mod.ElementMenu)
 	radoviDb := w.Jdb.ReadList(hash)
@@ -99,17 +102,6 @@ func (w *WingCal) UcitajElement(icon *widget.Icon, hash string) {
 	fmt.Println("radr33333333333333adrad", rad)
 
 	return
-}
-
-func (w *WingCal) UcitajMaterijale(hash string) {
-	r := w.Jdb.ReadList(hash)
-	for _, folder := range r {
-		if folder.Name == "materijali" {
-			//fmt.Println("CidCidCidCid", folder.Cid.String())
-
-			w.UcitajMaterijal(folder.Cid.String())
-		}
-	}
 }
 
 func (w *WingCal) UcitajMaterijal(hash string) {

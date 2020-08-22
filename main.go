@@ -22,8 +22,7 @@ func main() {
 		fmt.Println("running initial sync")
 	}
 	in.Init(w.Podesavanja.File)
-	w.UcitajRadove("QmY7xLQfkxHYLjEEJyT8c9Hbityqb3jho2Wj1qX1kB7PuB")
-	w.UcitajMaterijale("QmY7xLQfkxHYLjEEJyT8c9Hbityqb3jho2Wj1qX1kB7PuB")
+	go w.Ucitaj("QmY7xLQfkxHYLjEEJyT8c9Hbityqb3jho2Wj1qX1kB7PuB")
 
 	//w.GenerisanjeLinkova(w.IzbornikRadova)
 
@@ -46,11 +45,10 @@ func loop(w *calc.WingCal) error {
 			case system.FrameEvent:
 				w.UI.Context = layout.NewContext(&w.UI.Ops, e)
 				helper.Fill(w.UI.Context, helper.HexARGB(w.UI.Tema.Colors["Light"]))
-
-				if !w.API.OK {
-					w.GreskaEkran()
-				} else {
+				if len(w.IzbornikRadova) > 0 {
 					w.GlavniEkran(w.UI.Context)
+				} else {
+					w.GreskaEkran()
 				}
 
 				e.Frame(w.UI.Context.Ops)
