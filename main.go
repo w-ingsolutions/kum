@@ -22,7 +22,8 @@ func main() {
 		fmt.Println("running initial sync")
 	}
 	in.Init(w.Podesavanja.File)
-	go w.Ucitaj("QmY7xLQfkxHYLjEEJyT8c9Hbityqb3jho2Wj1qX1kB7PuB")
+
+	w.Ucitaj("QmY7xLQfkxHYLjEEJyT8c9Hbityqb3jho2Wj1qX1kB7PuB")
 
 	//w.GenerisanjeLinkova(w.IzbornikRadova)
 
@@ -33,6 +34,7 @@ func main() {
 		}
 	}()
 	app.Main()
+
 }
 
 func loop(w *calc.WingCal) error {

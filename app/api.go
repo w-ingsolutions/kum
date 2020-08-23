@@ -12,9 +12,9 @@ func (w *WingCal) Ucitaj(hash string) {
 	for _, folder := range r {
 		switch folder.Name {
 		case "radovi":
-			w.UcitajRadove(folder.Cid.String())
+			go w.UcitajRadove(folder.Cid.String())
 		case "materijali":
-			w.UcitajMaterijal(folder.Cid.String())
+			go w.UcitajMaterijal(folder.Cid.String())
 		}
 	}
 }
@@ -80,7 +80,7 @@ func (w *WingCal) UcitajVrsteRadova(hash string) (r mod.ElementMenu) {
 
 func (w *WingCal) UcitajElementMenu(icon *widget.Icon, hash string) (r mod.ElementMenu) {
 	var item phi.Φ
-	w.Jdb.Read(hash, &item)
+	go w.Jdb.Read(hash, &item)
 	//fmt.Println("itemTitle,", item.Struct["Title"])
 	r = mod.ElementMenu{
 		Id:        item.ID,
@@ -111,7 +111,7 @@ func (w *WingCal) UcitajMaterijal(hash string) {
 	for _, materijal := range materijaliDb {
 		if materijal.Name != "φ" {
 			var m phi.Φ
-			w.Jdb.Read(materijal.Cid.String(), &m)
+			go w.Jdb.Read(materijal.Cid.String(), &m)
 			materijali[m.ID-1] = m
 
 			//fmt.Println("00000000000000")

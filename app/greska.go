@@ -9,5 +9,5 @@ func (w *WingCal) GreskaEkran() {
 	layout.Flex{
 		Axis: layout.Vertical,
 	}.Layout(w.UI.Context,
-		layout.Rigid(material.H3(w.UI.Tema.T, "Greška u povezivanju sa bazom ").Layout))
+		layout.Rigid(material.H3(w.UI.Tema.T, "Чцекај мало саћеда учшита...").Layout))
 }
