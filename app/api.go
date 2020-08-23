@@ -80,7 +80,7 @@ func (w *WingCal) UcitajVrsteRadova(hash string) (r mod.ElementMenu) {
 
 func (w *WingCal) UcitajElementMenu(icon *widget.Icon, hash string) (r mod.ElementMenu) {
 	var item phi.Φ
-	go w.Jdb.Read(hash, &item)
+	w.Jdb.Read(hash, &item)
 	//fmt.Println("itemTitle,", item.Struct["Title"])
 	r = mod.ElementMenu{
 		Id:        item.ID,
@@ -98,7 +98,6 @@ func (w *WingCal) UcitajElement(icon *widget.Icon, hash string) {
 	var rad *phi.Φ
 	w.Jdb.Read(hash, &rad)
 	w.PrikazaniElement = rad
-
 	fmt.Println("radr33333333333333adrad", rad)
 
 	return
