@@ -23,7 +23,7 @@ func main() {
 	}
 	in.Init(w.Podesavanja.File)
 
-	w.Ucitaj("QmY7xLQfkxHYLjEEJyT8c9Hbityqb3jho2Wj1qX1kB7PuB")
+	go w.Ucitaj("QmY7xLQfkxHYLjEEJyT8c9Hbityqb3jho2Wj1qX1kB7PuB")
 
 	//w.GenerisanjeLinkova(w.IzbornikRadova)
 
