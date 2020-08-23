@@ -28,7 +28,7 @@ func New(ctx context.Context, store string) *JavazacDB {
 	//log.SetLogLevel("*", "warn")
 
 	crypto.MinRsaKeyBits = 1024
-	ds, err := ipfslite.BadgerDatastore("~/")
+	ds, err := ipfslite.BadgerDatastore("/tmp")
 	if err != nil {
 		panic(err)
 	}
