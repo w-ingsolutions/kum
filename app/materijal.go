@@ -18,11 +18,11 @@ func (w *WingCal) MaterijalElementi() func(gtx C) D {
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
 						w.cell(text.Middle, w.text(m.Struct["Title"].Content.(string))),
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
-						w.cell(text.Middle, w.text(fmt.Sprint(m.Struct["Pakovanje"].Content.(string)))),
+						w.cell(text.Middle, fmt.Sprint(m.Struct["Pakovanje"].Content)),
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
 						w.cell(text.Middle, w.text(m.Struct["Jedinica"].Content.(string))),
 						helper.DuoUIline(true, 0, 8, 2, w.UI.Tema.Colors["Gray"]),
-						w.cell(text.End, w.text(fmt.Sprint(m.Struct["Cena"].Content.(string)))),
+						w.cell(text.End, fmt.Sprint(m.Struct["Cena"].Content)),
 					)
 				},
 				helper.DuoUIline(false, 0, 0, 1, w.UI.Tema.Colors["Gray"]))

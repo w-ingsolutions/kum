@@ -36,11 +36,11 @@ func (w *WingCal) projekat() []func(gtx C) D {
 		func(gtx C) D { return material.H6(w.UI.Tema.T, w.text("Radovi")).Layout(gtx) },
 		w.radovi(),
 		func(gtx C) D { return material.H6(w.UI.Tema.T, w.text("Radovi")).Layout(gtx) },
-		w.SumaElementi(projekat.Elementi.Elementi),
+		w.SumaElementi(projekat.Suma.Elementi),
 		func(gtx C) D { return material.H6(w.UI.Tema.T, w.text("Materijal")).Layout(gtx) },
 		w.materijal(),
 		func(gtx C) D { return material.H6(w.UI.Tema.T, w.text("Materijal")).Layout(gtx) },
-		w.UkupanNeophodanMaterijal(projekat.Elementi.NeophodanMaterijal),
+		w.UkupanNeophodanMaterijal(projekat.Suma.NeophodanMaterijal),
 	}
 }
 

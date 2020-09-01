@@ -12,7 +12,7 @@ type WingProjekat struct {
 	Objekti        []*WingObjekat
 	Investitor     *WingPravnoLice
 	Projektant     *WingPravnoLice
-	Elementi       *WingIzabraniElementi
+	Suma           *WingSuma
 	RabatRadovi    int
 	RabatMaterijal int
 

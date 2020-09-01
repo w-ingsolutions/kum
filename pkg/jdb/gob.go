@@ -32,10 +32,10 @@ func (j *JavazacDB) Read(fileName string, key interface{}) {
 	c, _ := cid.Decode(fileName)
 	rsc, err := j.peer.GetFile(j.ctx, c)
 	checkError(err)
+	//fmt.Println("DroljaIZKnjazevca", rsc)
 
 	decoder := gob.NewDecoder(rsc)
 	err = decoder.Decode(key)
-	//fmt.Println("DroljaIZKnjazevca", rsc)
 	checkError(err)
 	defer rsc.Close()
 }

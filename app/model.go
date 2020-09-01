@@ -48,10 +48,10 @@ type WingCal struct {
 	IzbornikRadova map[int]mod.ElementMenu
 
 	Transfered       mod.WingCalGrupaRadova
-	PrikazaniElement *phi.Φ
-	Suma             *mod.WingIzabraniElementi
+	PrikazaniElement *WingPrikazaniElement
+	Suma             *mod.WingSuma
 	Podvrsta         int
-	Roditelj         string
+	Roditelj         WingRoditelj
 	Element          bool
 	UI               WingUI
 	API              WingAPI
@@ -70,6 +70,15 @@ type WingUI struct {
 	Ekran       func(gtx layout.Context) layout.Dimensions
 	Ops         op.Ops
 	Counters    WingCounters
+}
+
+type WingRoditelj struct {
+	id   int
+	hash string
+}
+type WingPrikazaniElement struct {
+	el  *phi.Φ
+	mat []mod.WingNeophodanMaterijal
 }
 
 //

@@ -30,7 +30,7 @@ func (w *WingCal) Nazad() func(gtx C) D {
 						//komanda = "/" + fmt.Sprint(w.Roditelj)
 						//podvrstaradova = fmt.Sprint(w.Roditelj)
 						fmt.Println("roddddditeL1333311::", w.Roditelj)
-						w.UcitajRadove(w.Roditelj)
+						w.UcitajRadove(w.Roditelj.hash)
 					}
 					if len(w.Putanja) == 4 {
 						fmt.Println("roddddditeL11444441::", w.Roditelj)

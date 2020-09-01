@@ -112,7 +112,7 @@ func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l mod.ElementMenu) {
 			fmt.Println("2222222")
 			//komanda = Podvrstaradova + "/" + fmt.Sprint(l.Id)
 			Elementi = fmt.Sprint(l.Id)
-			w.Roditelj = l.Hash
+			w.Roditelj.id = l.Id
 		}
 		if len(w.Putanja) == 3 {
 			fmt.Println("3333333")
@@ -136,6 +136,7 @@ func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l mod.ElementMenu) {
 		if len(w.Putanja) == 3 {
 			fmt.Println("333333")
 			w.UcitajElement(l.Icon, l.Hash)
+			w.PrikazaniElementMaterijal()
 			w.Element = true
 
 		}

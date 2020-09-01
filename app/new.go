@@ -22,13 +22,15 @@ import (
 
 func NewWingCal() *WingCal {
 	w := &WingCal{
-		Strana:           "radovi",
-		ctx:              context.Background(),
-		PrikazaniElement: &phi.Φ{},
-		Suma: &mod.WingIzabraniElementi{
+		Strana: "radovi",
+		ctx:    context.Background(),
+		Suma: &mod.WingSuma{
 			Elementi:           []*mod.WingIzabraniElement{},
 			NeophodanMaterijal: make(map[int]mod.WingNeophodanMaterijal),
 		},
+	}
+	w.PrikazaniElement = &WingPrikazaniElement{
+		el: &phi.Φ{},
 	}
 	w.Jdb = jdb.New(w.ctx, "datastore")
 	w.Podesavanja = &WingPodesavanja{

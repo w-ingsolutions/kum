@@ -28,7 +28,7 @@ type WingIzabraniElement struct {
 	DugmeBrisanje *widget.Clickable
 }
 
-type WingIzabraniElementi struct {
+type WingSuma struct {
 	Id                       string
 	SumaCena                 float64
 	SumaCenaMaterijal        float64
