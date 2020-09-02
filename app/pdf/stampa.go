@@ -44,7 +44,7 @@ func KreiranjeNalogaPDF(pr *mod.WingProjekat, nz string) {
 	p.specifikacijaRadovaList()
 	p.specifikacijaMaterijalaList()
 	p.tehnickiList()
-	p.novaStrana()
+	//p.novaStrana()
 	p.sadrzajList()
 	//err := p.pdf.OutputFileAndClose(w.Podesavanja.Dir + "/nalog.pdf")
 	err := p.pdf.OutputFileAndClose(p.naziv)

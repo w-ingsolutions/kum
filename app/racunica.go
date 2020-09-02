@@ -27,7 +27,7 @@ func (w *WingCal) PrikazaniElementSumaRacunica() func() {
 func (w *WingCal) ProjekatRacunica() func() {
 	return func() {
 		p := w.Suma
-		iz := []*mod.WingIzabraniElement{}
+		iz := []mod.WingIzabraniElement{}
 		for _, e := range w.Suma.Elementi {
 			ee := e
 			ee.SumaCena = e.SumaCena * float64(w.UI.Counters.Radovi.Value) / 100
@@ -61,26 +61,43 @@ func (w *WingCal) NeophodanMaterijal() {
 	unm := make(map[int]mod.WingNeophodanMaterijal)
 	sumaCena := 0.0
 	for _, e := range w.Suma.Elementi {
-		//ukupnaCenaMaterijala := 0.0
+		ukupnaCenaMaterijala := 0.0
 		var neophodanMaterijal []map[string]int
-		err := json.Unmarshal([]byte(w.PrikazaniElement.el.Struct["NeophodanMaterijal"].Content.(string)), &neophodanMaterijal)
-		if err != nil {
-			log.Println(err)
-		}
+		n := w.PrikazaniElement.el.Struct["NeophodanMaterijal"]
+		fmt.Println("nnnnnnnnnnn::", n)
 
+		if n.Content != nil {
+			err := json.Unmarshal([]byte(n.Content.(string)), &neophodanMaterijal)
+			if err != nil {
+				log.Println(err)
+			}
+		}
 		for _, pojedinacniMaterijalSume := range neophodanMaterijal {
-			id := pojedinacniMaterijalSume["Id"]
+			id := pojedinacniMaterijalSume["id"]
+			fmt.Println("id::", id)
+			fmt.Println("koe::", pojedinacniMaterijalSume["koeficijent"])
 			materijal := mod.WingNeophodanMaterijal{
 				Id:        id,
-				Materijal: w.Materijal[id-1],
+				Materijal: w.Materijal[id],
 			}
-			//k := materijal.Materijal.Struct["Pakovanje"].Content.(float64) * float64(e.Kolicina) * float64(pojedinacniMaterijalSume["Koeficijent"])
-			//materijal.Kolicina = ukupanNeophodniMaterijal[id].Kolicina + k
-			//ukupnaCena := materijal.Kolicina * materijal.Materijal.Struct["Cena"].Content.(float64)
-			//materijal.UkupnaCena = ukupnaCena
-			//materijal.UkupnoPakovanja = int(k / materijal.Materijal.Struct["Pakovanje"].Content.(float64))
+			k := float64(materijal.Materijal.Struct["Potrosnja"].Content.(int)) * float64(e.Kolicina) * float64(pojedinacniMaterijalSume["koeficijent"])
+			materijal.Kolicina = ukupanNeophodniMaterijal[id].Kolicina + k
+			ukupnaCena := materijal.Kolicina * materijal.Materijal.Struct["Cena"].Content.(float64)
+			materijal.UkupnaCena = ukupnaCena
+			materijal.UkupnoPakovanja = int(k / float64(materijal.Materijal.Struct["Pakovanje"].Content.(int)))
 			ukupanNeophodniMaterijal[id] = materijal
-			//ukupnaCenaMaterijala = ukupnaCenaMaterijala + ukupnaCena
+			ukupnaCenaMaterijala = ukupnaCenaMaterijala + ukupnaCena
+			//
+
+			fmt.Println("kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk::", k)
+			fmt.Println("kkkkkkkkkkkmm::", float64(materijal.Materijal.Struct["Potrosnja"].Content.(int)))
+			fmt.Println("kkkkkkee::", float64(e.Kolicina))
+			fmt.Println("ukupnaCenaee::", ukupnaCena)
+			fmt.Println("kkkkkkkkkkkPPP::", float64(pojedinacniMaterijalSume["Koeficijent"]))
+			fmt.Println("ukupnaCenaMaterijala::", ukupnaCenaMaterijala)
+
+			fmt.Println("PakovanjePakovanjePakovanje::", materijal.Materijal.Struct["Pakovanje"].Content.(int))
+			fmt.Println("kkkkkkkkkkkkPakovanjePakovanjePakovanjekkkkkkkk::", int(k/float64(materijal.Materijal.Struct["Pakovanje"].Content.(int))))
 		}
 		fmt.Println("eeeeeeeeee::", e)
 

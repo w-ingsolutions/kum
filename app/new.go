@@ -25,7 +25,7 @@ func NewWingCal() *WingCal {
 		Strana: "radovi",
 		ctx:    context.Background(),
 		Suma: &mod.WingSuma{
-			Elementi:           []*mod.WingIzabraniElement{},
+			Elementi:           []mod.WingIzabraniElement{},
 			NeophodanMaterijal: make(map[int]mod.WingNeophodanMaterijal),
 		},
 	}

@@ -136,7 +136,9 @@ func (w *WingCal) LinkoviIzboraVrsteRadovaKlik(l mod.ElementMenu) {
 		if len(w.Putanja) == 3 {
 			fmt.Println("333333")
 			w.UcitajElement(l.Icon, l.Hash)
-			w.PrikazaniElementMaterijal()
+			if w.PrikazaniElement.el.Struct["NeophodanMaterijal"].Content != nil {
+				w.PrikazaniElementMaterijal()
+			}
 			w.Element = true
 
 		}

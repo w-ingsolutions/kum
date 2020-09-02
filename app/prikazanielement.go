@@ -52,9 +52,9 @@ func (w *WingCal) PrikazaniElementDugmeDodaj(sumaCena float64) func(gtx C) D {
 				}
 				fmt.Println("sumasumasumasumai", suma)
 
-				w.Suma.Elementi = append(w.Suma.Elementi, &suma)
+				w.Suma.Elementi = append(w.Suma.Elementi, suma)
 
-				//fmt.Println("w.Suma.Elementi", w.Suma.Elementi)
+				fmt.Println("w.Suma.Elementi", w.Suma.Elementi)
 
 				w.SumaRacunica()
 				//w.Strana = "sumaRadovi"

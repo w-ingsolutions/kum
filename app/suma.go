@@ -28,7 +28,7 @@ func (w *WingCal) SumaStranaPrazno() func(gtx C) D {
 	}
 }
 
-func (w *WingCal) SumaElementi(el []*mod.WingIzabraniElement) func(gtx C) D {
+func (w *WingCal) SumaElementi(el []mod.WingIzabraniElement) func(gtx C) D {
 	return func(gtx C) D {
 		return sumList.Layout(gtx, len(el), func(gtx C, i int) D {
 			element := el[i]

@@ -30,7 +30,7 @@ func (p *WingPrint) specifikacijaMaterijalaList() {
 				"Jedinica mere", e.Materijal.Struct["JedinicaPotrosnje"].Content.(string),
 			},
 			[]string{
-				"Jedinična cena", e.Materijal.Struct["Cena"].Content.(string),
+				"Jedinična cena", fmt.Sprint(e.Materijal.Struct["Cena"].Content.(float64)),
 			},
 			[]string{
 				"Količina", fmt.Sprint(e.Kolicina),

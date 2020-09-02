@@ -32,7 +32,7 @@ type WingSuma struct {
 	Id                       string
 	SumaCena                 float64
 	SumaCenaMaterijal        float64
-	Elementi                 []*WingIzabraniElement
+	Elementi                 []WingIzabraniElement
 	NeophodanMaterijal       map[int]WingNeophodanMaterijal
 	NeophodanMaterijalPrikaz map[int]WingNeophodanMaterijal
 }
