@@ -32,7 +32,7 @@ func NewWingCal() *WingCal {
 	w.PrikazaniElement = &WingPrikazaniElement{
 		el: &phi.Φ{},
 	}
-	w.Jdb = jdb.New(w.ctx, "./datastore")
+	w.Jdb = jdb.New(w.ctx, "/tmp/datastore")
 	w.Podesavanja = &WingPodesavanja{
 		Naziv: "Kalkulator",
 		Dir:   wapp.Dir("wing", false),
