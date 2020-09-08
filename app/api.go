@@ -117,7 +117,7 @@ func (w *WingCal) UcitajMaterijal(hash string) {
 		if materijal.Name != "φ" {
 			var m phi.Φ
 			w.Jdb.Read(materijal.Cid.String(), &m)
-			materijali[m.ID-1] = m
+			materijali[m.ID] = m
 
 			//fmt.Println("00000000000000")
 			//fmt.Println("00000000000000")

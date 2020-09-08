@@ -2,19 +2,20 @@ package calc
 
 import (
 	"gioui.org/layout"
+	"gioui.org/unit"
 	"github.com/w-ingsolutions/c/pkg/lyt"
 )
 
-func (w *WingCal) Monitor(izbornikStrana, sumaRadovaStrana, sumaMaterijalStrana func(gtx C) D) func(gtx C) D {
+func (w *WingCal) Radovi(izbornikStrana, sumaRadovaStrana, sumaMaterijalStrana func(gtx C) D) func(gtx C) D {
 	return func(gtx C) D {
-		return layout.Inset{}.Layout(gtx, func(gtx C) D {
+		return layout.UniformInset(unit.Dp(0)).Layout(gtx, func(gtx C) D {
 			suma := func(gtx C) D {
-				return lyt.Format(gtx, "vflexb(middle,f(0.5,_),f(0.5,_))", sumaRadovaStrana, sumaMaterijalStrana)
+				return lyt.Format(gtx, "vflexb(middle,f(0.5,inset(0dp,_)),f(0.5,inset(0dp,_)))", sumaRadovaStrana, sumaMaterijalStrana)
 			}
 			if len(w.Suma.Elementi) >= 1 {
-				return lyt.Format(gtx, "hflexb(middle,f(0.4,_),f(0.6,_))", izbornikStrana, suma)
+				return lyt.Format(gtx, "hflexb(middle,f(0.4,inset(0dp,_)),f(0.6,inset(0dp,_)))", izbornikStrana, suma)
 			} else {
-				return lyt.Format(gtx, "hflexb(middle,f(1,_))", izbornikStrana)
+				return lyt.Format(gtx, "hflexb(middle,f(1,inset(0dp,_)))", izbornikStrana)
 			}
 		})
 	}

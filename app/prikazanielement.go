@@ -71,7 +71,6 @@ func (w *WingCal) SumaElementiPrikaz() {
 	//	w.Suma.ElementiPrikaz = append(w.Suma.Elementi, e)
 	//
 	//}
-
 }
 func (w *WingCal) PrikazaniElementIzgled() func(gtx C) D {
 	return func(gtx C) D {

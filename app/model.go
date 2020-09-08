@@ -40,10 +40,10 @@ type WingCal struct {
 	ctx    context.Context
 	Jdb    *jdb.JavazacDB
 	//LinkoviIzboraVrsteRadova map[int]*widget.Clickable
-	EditPolja      *mod.EditabilnaPoljaVrsteRadova
-	Materijal      map[int]phi.Φ
-	Lica           WingUloge
-	Radovi         mod.WingVrstaRadova
+	EditPolja *mod.EditabilnaPoljaVrsteRadova
+	Materijal map[int]phi.Φ
+	Lica      WingUloge
+	//Radovi         mod.WingVrstaRadova
 	Putanja        []string
 	IzbornikRadova map[int]mod.ElementMenu
 

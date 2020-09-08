@@ -83,7 +83,7 @@ func (w *WingCal) strana(gtx C) func(gtx C) D {
 		case "pomoc":
 			s = pomocStrana
 		default:
-			s = w.Monitor(izbornikStrana, sumaRadovaStrana, sumaMaterijalStrana)
+			s = w.Radovi(izbornikStrana, sumaRadovaStrana, sumaMaterijalStrana)
 		}
 	case "lap":
 		switch w.Strana {
@@ -96,7 +96,7 @@ func (w *WingCal) strana(gtx C) func(gtx C) D {
 		case "pomoc":
 			s = pomocStrana
 		default:
-			s = w.Monitor(izbornikStrana, sumaRadovaStrana, sumaMaterijalStrana)
+			s = w.Radovi(izbornikStrana, sumaRadovaStrana, sumaMaterijalStrana)
 		}
 	case "des":
 		switch w.Strana {
@@ -109,7 +109,7 @@ func (w *WingCal) strana(gtx C) func(gtx C) D {
 		case "pomoc":
 			s = pomocStrana
 		default:
-			s = w.Monitor(izbornikStrana, sumaRadovaStrana, sumaMaterijalStrana)
+			s = w.Radovi(izbornikStrana, sumaRadovaStrana, sumaMaterijalStrana)
 		}
 	}
 	return s

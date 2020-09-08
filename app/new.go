@@ -32,7 +32,7 @@ func NewWingCal() *WingCal {
 	w.PrikazaniElement = &WingPrikazaniElement{
 		el: &phi.Φ{},
 	}
-	w.Jdb = jdb.New(w.ctx, "datastore")
+	w.Jdb = jdb.New(w.ctx, "./datastore")
 	w.Podesavanja = &WingPodesavanja{
 		Naziv: "Kalkulator",
 		Dir:   wapp.Dir("wing", false),
@@ -45,14 +45,14 @@ func NewWingCal() *WingCal {
 	saStraneMarginom := layout.UniformInset(unit.Dp(0))
 	saStraneMarginom.Left = unit.Dp(8)
 	saStraneMarginom.Right = unit.Dp(8)
-	w.Radovi = mod.WingVrstaRadova{
-		Id:       0,
-		Naziv:    "Radovi",
-		Slug:     "radovi",
-		Omogucen: false,
-		Baza:     false,
-		Element:  false,
-	}
+	//w.Radovi = mod.WingVrstaRadova{
+	//	Id:       0,
+	//	Naziv:    "Radovi",
+	//	Slug:     "radovi",
+	//	Omogucen: false,
+	//	Baza:     false,
+	//	Element:  false,
+	//}
 	w.UI = WingUI{
 		Device:      "p",
 		TopSpace:    28,
@@ -123,6 +123,6 @@ func NewWingCal() *WingCal {
 	}
 	w.UI.Counters = counters
 	w.UI.Tema.Icons = icons.NewWingUIicons()
-	w.Putanja = append(w.Putanja, w.Radovi.Naziv)
+	w.Putanja = append(w.Putanja, "Radovi")
 	return w
 }
